@@ -1,3 +1,4 @@
+// @charset "UTF-8"; @mime-type "text/javascript";
     var language = "ES"; // ES || EN
     var site = "Home";  // home || contact
 
