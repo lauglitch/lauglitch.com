@@ -49,9 +49,8 @@
     }
     function toggleContentBasedOnURL() {
         var currentURL = window.location.href;
-        console.log("Hola1")
+
         if (currentURL === "https://www.lauglitch.com/") {
-            console.log("Hola2")
             // HEADER
             document.getElementById('lauglitchLogoInicio').style.display = 'block';
             document.getElementById('keypadsInicio').style.display = 'block';
