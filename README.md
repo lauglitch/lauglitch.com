@@ -6,6 +6,7 @@ JavaScript engine file used on 'lauglitch.com'
 
 ## Current Version
 1.0
+(Developing 1.1)
 
 ## Technologies
 * Developed with HTML5, CSS3 and JavaScript
