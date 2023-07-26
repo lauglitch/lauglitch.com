@@ -13,12 +13,12 @@ window.onhashchange = toggleContentBasedOnURL;
 function redirectToHomeES() {
     setLanguage("ES");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com";
+    window.location.href = "https://www.lauglitch.com/";
 }
 function redirectToHomeEN() {
     setLanguage("EN");
     setSite("home");
-    window.location.href = "https://www.lauglitch.com/p/home.html";
+    window.location.href =  "https://www.lauglitch.com/p/home.html";
 }
 function redirectToContactES() {
     setLanguage("ES");
@@ -49,8 +49,8 @@ function getDomain(url) {
 }
 function toggleContentBasedOnURL() {
     var currentURL = window.location.href;
-
-    if (currentURL === "https://www.lauglitch.com/") {
+    
+    if (currentURL === "https://www.lauglitch.com/") { 
         // HEADER
         document.getElementById('lauglitchLogoInicio').style.display = 'block';
         document.getElementById('keypadsInicio').style.display = 'block';
