@@ -612,6 +612,7 @@
   <script defer src="https://cdn.jsdelivr.net/gh/jquery/jquery@3/dist/jquery.min.js"></script>
 
   <!-- JS Logic 
+   <script defer src="https://lauglitch.github.io/lauglitch.com/lauglitchLogic.js">--> 
    <script defer src="https://lauglitch.github.io/lauglitch.com/lauglitchLogic.js">
   </script>
   <!-- END JS Logic --> 
