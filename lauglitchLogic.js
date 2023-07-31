@@ -203,57 +203,77 @@ function switchKeypadButtons(){
     if (getLanguage() === 'ES' & getSite() === 'Home'){
         lauglitchButton.disabled = true; // true === doesnt work ; false === works
         spanishButton.disabled = true;  
-        lauglitchButton = function() {};
-        spanishButton = function() {};
+        removeInteraction(lauglitchButton);
+        removeInteraction(spanishButton);
 
         englishButton.disabled = false;
         contactButton.disabled = false; 
         englishBFunc = redirectToHomeEN;
         contactBFunc = redirectToContactES;
+        addInteraction(englishButton);
+        addInteraction(contactButton);
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
         lauglitchButton.disabled = true; 
         englishButton.disabled = true;
-        lauglitchButton = function() {};
-        englishButton = function() {};
+        removeInteraction(lauglitchButton);
+        removeInteraction(englishButton);
 
         spanishButton.disabled = false;
         contactButton.disabled = false;
         spanishBFunc = redirectToHomeES;
         contactBFunc = redirectToContactEN;
+        addInteraction(spanishButton);
+        addInteraction(contactButton);
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
         spanishButton.disabled = true;
         contactButton.disabled = true;
-        spanishButton = function() {};
-        contactButton = function() {};
+        removeInteraction(spanishButton);
+        removeInteraction(contactButton);
 
         lauglitchButton.disabled = false;
         englishButton.disabled = false;
         lauglitchBFunc = redirectToHomeES;
         englishBFunc = redirectToContactEN;
+        addInteraction(lauglitchButton);
+        addInteraction(englishButton);
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
         englishButton.disabled = true;
         contactButton.disabled = true;
-        englishButton = function() {};
-        contactButton = function() {};
+        removeInteraction(englishButton);
+        removeInteraction(contactButton);
         
         lauglitchButton.disabled = false;
         spanishButton.disabled = false;
         lauglitchBFunc = redirectToHomeEN;
         spanishBFunc = redirectToContactES;
+        addInteraction(lauglitchButton);
+        addInteraction(spanishButton);
     } else {
         console.log('Variables de localización no identificadas.')
     }
-
 }
 
-function onMouseEnter(b) {
-    b.style.backgroundColor = 'blue';
-    b.style.color = 'white';
+function onMouseEnter(button) {
+    button.style.backgroundColor = 'blue';
+    button.style.color = 'white';
 }
   
-function onMouseLeave(b) {
-    b.style.backgroundColor = '';
-    b.style.color = '';
+function onMouseLeave(button) {
+    button.style.backgroundColor = '';
+    button.style.color = '';
+}
+
+// Remove from parameter button every Event Listener
+function removeInteraction(button){
+    button.removeEventListener('click', function(){}); 
+    button.removeEventListener('mouseenter', onMouseEnter);
+    button.removeEventListener('mouseleave', onMouseLeave);
+}
+
+// Add to parameter button Event Listeners with empty functions 
+function addInteraction(button){
+    button.addEventListener('mouseenter', onMouseEnter(button));
+    button.addEventListener('mouseleave', onMouseLeave(button));
 }
 
 ///////////// END /////////////
