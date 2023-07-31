@@ -13,25 +13,28 @@ var englishButton = document.getElementById('englishButton');
 var contactButton = document.getElementById('contactButton');
 let lauglitchBFunc = redirectToHomeES;
 let spanishBFunc = redirectToHomeES;
-let englishBFunc = redirectToHomeEN();
+let englishBFunc = redirectToHomeEN;
 let contactBFunc = redirectToContactES;
 
 ///////////// 1- ORDERED INSTRUCTIONS
 console.log("V1.111");                           // Debug version
 toggleContentBasedOnURL();                      // Called of first page load
-window.onhashchange = toggleContentBasedOnURL;  // Call everytime the page changes
 
 lauglitchButton.addEventListener("click", function () {
     lauglitchBFunc();
+    toggleContentBasedOnURL();
 });
 spanishButton.addEventListener("click", function () {
     spanishBFunc();
+    toggleContentBasedOnURL();
 });
 englishButton.addEventListener("click", function () {
     englishBFunc();
+    toggleContentBasedOnURL();
 });
 contactButton.addEventListener("click", function () {
     contactBFunc();
+    toggleContentBasedOnURL();
 });
 
 ///////////// 2- GETTERS AND SETTERS
