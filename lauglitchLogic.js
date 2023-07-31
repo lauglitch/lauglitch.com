@@ -241,8 +241,8 @@ function switchKeypadButtons(){
 function removeInteraction(buttonToNotInteract){
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
-    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter);
-    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave);
+    buttonToNotInteract.removeEventListener('mouseenter', function(){});
+    buttonToNotInteract.removeEventListener('mouseleave', function(){});
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
