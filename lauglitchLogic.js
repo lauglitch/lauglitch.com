@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.120");                          // Debug version
+console.log("V1.121");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -201,58 +201,42 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
 function switchKeypadButtons(){
     console.log("switchKeypadButtons() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
     if (getLanguage() === 'ES' & getSite() === 'Home'){
-        lauglitchButton.style.pointerEvents = 'none';
         lauglitchButton.disabled = true; // true === doesnt work ; false === works
-        spanishButton.style.pointerEvents = 'none';
         spanishButton.disabled = true;  
         lauglitchButton = function() {};
         spanishButton = function() {};
 
-        englishButton.style.pointerEvents = 'auto';
         englishButton.disabled = false;
-        contactButton.style.pointerEvents = 'auto';
         contactButton.disabled = false; 
         englishBFunc = redirectToHomeEN;
         contactBFunc = redirectToContactES;
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
-        lauglitchButton.style.pointerEvents = 'none';
         lauglitchButton.disabled = true; 
-        englishButton.style.pointerEvents = 'none';
         englishButton.disabled = true;
         lauglitchButton = function() {};
         englishButton = function() {};
 
-        spanishButton.style.pointerEvents = 'auto';
         spanishButton.disabled = false;
-        contactButton.style.pointerEvents = 'auto';
         contactButton.disabled = false;
         spanishBFunc = redirectToHomeES;
         contactBFunc = redirectToContactEN;
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
-        spanishButton.style.pointerEvents = 'none';
         spanishButton.disabled = true;
-        contactButton.style.pointerEvents = 'none';
         contactButton.disabled = true;
         spanishButton = function() {};
         contactButton = function() {};
 
-        lauglitchButton.style.pointerEvents = 'auto';
         lauglitchButton.disabled = false;
-        englishButton.style.pointerEvents = 'auto';
         englishButton.disabled = false;
         lauglitchBFunc = redirectToHomeES;
         englishBFunc = redirectToContactEN;
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
-        englishButton.style.pointerEvents = 'none';
         englishButton.disabled = true;
-        contactButton.style.pointerEvents = 'none';
         contactButton.disabled = true;
         englishButton = function() {};
         contactButton = function() {};
         
-        lauglitchButton.style.pointerEvents = 'auto';
         lauglitchButton.disabled = false;
-        spanishButton.style.pointerEvents = 'auto';
         spanishButton.disabled = false;
         lauglitchBFunc = redirectToHomeEN;
         spanishBFunc = redirectToContactES;
