@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.119");                          // Debug version
+console.log("V1.120");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
