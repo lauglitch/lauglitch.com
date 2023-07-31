@@ -13,9 +13,22 @@ var englishButton = document.getElementById('englishButton');
 var contactButton = document.getElementById('contactButton');
 
 ///////////// 1- ORDERED INSTRUCTIONS
-console.log("V1.113");                           // Debug version
+console.log("V1.111");                           // Debug version
 toggleContentBasedOnURL();                      // Called of first page load
 window.onhashchange = toggleContentBasedOnURL;  // Call everytime the page changes
+
+lauglitchButton.addEventListener("click", function () {
+    redirectToHomeES()  
+});
+spanishButton.addEventListener("click", function () {
+    redirectToHomeES()
+});
+englishButton.addEventListener("click", function () {
+    redirectToHomeEN()
+});
+contactButton.addEventListener("click", function () {
+    redirectToContactES()
+});
 
 ///////////// 2- GETTERS AND SETTERS
 function setLanguage(lang) {
@@ -155,7 +168,7 @@ function toggleContentBasedOnURL() {        // Called after navigation methods
         console.log("No existe esta página.");
     }
 
-    //switchKeypadButtons();
+    switchKeypadButtons();
 }
 
 function switchKeypadButtons(){
