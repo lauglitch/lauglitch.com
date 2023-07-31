@@ -4021,6 +4021,8 @@ textarea.input-lg {
     display: inline-block;
     position: relative;
     overflow: hidden;
+    width: 260px;
+    height: 85px;
 }
 
 .botonLogo img {
@@ -4031,5 +4033,6 @@ textarea.input-lg {
 }
 
 .botonLogo:hover img {
-    transform: scale(1.2);
+    background-color: #ff006a; 
+    opacity: 0.5;
 }
