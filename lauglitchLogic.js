@@ -111,7 +111,8 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Home');
         setWebVersion('PC');
         
-        imageLauglitch.classList.remove('hover-effect');
+        lauglitchButton.style.removeProperty('filter');
+        imageLauglitch.style.removeProperty('filter');
 
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
@@ -149,7 +150,7 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Contact');
         setWebVersion('PC');
-        
+
         imageLauglitch.classList.add('hover-effect');
 
         // BODY
