@@ -209,7 +209,7 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
 
         englishButton.classList.add('clickedButton');
         spanishButton.classList.remove('clickedButton');
-        
+
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
 
@@ -271,8 +271,8 @@ function switchKeypadButtons(){
 function removeInteraction(buttonToNotInteract){
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
-    buttonToNotInteract.removeEventListener('mouseenter', function(){});
-    buttonToNotInteract.removeEventListener('mouseleave', function(){});
+    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter(buttonToInteract));
+    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave(buttonToInteract));
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
@@ -287,6 +287,12 @@ function onMouseEnter(b1) {
 function onMouseLeave(b2) {
     b2.style.backgroundColor = '';
     b2.style.color = '';
+}
+function revertOnMouseEnter(b1) {
+
+}
+function revertOnMouseLeave(b2) {
+
 }
 
 
