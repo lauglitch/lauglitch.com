@@ -4020,7 +4020,7 @@ textarea.input-lg {
     width: 245px;
     height: 90px;
 }
-.botonLogo:hover {
+.botonLogo img:hover {
     opacity: 0.5;
 }
 .transparent-button {
