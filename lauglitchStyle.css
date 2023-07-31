@@ -5,7 +5,7 @@ body#layout {
 }
 
 body#layout div.widget {
-    position: ;
+    /*position: ;*/
 }
 
 body#layout div.section {
@@ -655,6 +655,8 @@ p.footer-link {
 }
 
 .boxframe:after,
+
+/*
 .boxframe:before {
     content: &quot;
     : &quot;
@@ -664,7 +666,7 @@ p.footer-link {
     border: 1px solid #bbb;
     border-top: 0;
     box-shadow: 0 0 3px rgba(0, 0, 0, .1)
-}
+}*/
 
 .boxframe:before {
     bottom: -3px;
@@ -3991,8 +3993,6 @@ textarea.input-lg {
         font-size: 20px;
     }
 
-    .bloqueContacto {}
-
     .margenLinksContacto {
         text-align: left;
     }
@@ -4014,5 +4014,5 @@ textarea.input-lg {
 }
 
 .boton:hover img {
-    transform: scale(1.45);
+    transform: scale(1.5);
 }
