@@ -12,10 +12,10 @@ var lauglitchButton = document.getElementById('lauglitchButton');
 var spanishButton = document.getElementById('spanishButton');
 var englishButton = document.getElementById('englishButton');
 var contactButton = document.getElementById('contactButton');
-let lauglitchBFunc;
-let spanishBFunc;
-let englishBFunc;
-let contactBFunc;
+let lauglitchBFunc = function() {};
+let spanishBFunc = function() {};
+let englishBFunc = function() {};
+let contactBFunc = function() {};
 lauglitchButton.addEventListener("click", function () {
     console.log("lauglitchButton clicked");
     lauglitchBFunc();
@@ -38,7 +38,7 @@ contactButton.addEventListener("click", function () {
 });
 
 ///////////// 1- INSTRUCTIONS
-console.log("V1.115");                          // Debug version
+console.log("V1.116");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -186,7 +186,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
 function switchKeypadButtons(){
     if (getLanguage() === 'ES' & getSite() === 'Home'){
         lauglitchButton.disabled = true;
-        spanishButton.disabled = true;  // true === OFF ; false === ON
+        spanishButton.disabled = true;  // true === doesnt work ; false === works
+        lauglitchButton = function() {};
+        spanishButton = function() {};
 
         englishButton.disabled = false;
         contactButton.disabled = false; 
@@ -195,6 +197,8 @@ function switchKeypadButtons(){
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
         lauglitchButton.disabled = true;  
         englishButton.disabled = true;
+        lauglitchButton = function() {};
+        englishButton = function() {};
 
         spanishButton.disabled = false;
         contactButton.disabled = false;
@@ -203,6 +207,8 @@ function switchKeypadButtons(){
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
         spanishButton.disabled = true;
         contactButton.disabled = true;
+        spanishButton = function() {};
+        contactButton = function() {};
 
         lauglitchButton.disabled = false;
         englishButton.disabled = false;
@@ -211,7 +217,9 @@ function switchKeypadButtons(){
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
         englishButton.disabled = true;
         contactButton.disabled = true;
-
+        englishButton = function() {};
+        contactButton = function() {};
+        
         lauglitchButton.disabled = false;
         spanishButton.disabled = false;
         lauglitchBFunc = redirectToHomeEN;
