@@ -4016,3 +4016,22 @@ textarea.input-lg {
 .boton:hover img {
     transform: scale(1.5);
 }
+
+.botonLogo {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 240px;
+    height: 80px;
+}
+
+.botonLogo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.botonLogo:hover img {
+    transform: scale(1.5);
+}
