@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.123");                          // Debug version
+console.log("V1.124");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -271,8 +271,8 @@ function switchKeypadButtons(){
 function removeInteraction(buttonToNotInteract){
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
-    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter(buttonToInteract));
-    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave(buttonToInteract));
+    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter(buttonToNotInteract));
+    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave(buttonToNotInteract));
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
