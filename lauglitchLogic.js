@@ -213,9 +213,6 @@ function switchKeypadButtons(){
         removeInteraction(lauglitchButton);
         removeInteraction(englishButton);
 
-        englishButton.classList.add('clickedButton');
-        spanishButton.classList.remove('clickedButton');
-
         addInteraction(spanishButton);
         addInteraction(contactButton);
         spanishBFunc = redirectToHomeES;
@@ -231,9 +228,6 @@ function switchKeypadButtons(){
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
         removeInteraction(englishButton);
         removeInteraction(contactButton);
-        
-        englishButton.classList.add('clickedButton');
-        spanishButton.classList.remove('clickedButton');
 
         addInteraction(lauglitchButton);
         addInteraction(spanishButton);
@@ -249,8 +243,8 @@ function removeInteraction(buttonToNotInteract){
 
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
-    buttonToNotInteract.removeEventListener('mouseenter', function(){});
-    buttonToNotInteract.removeEventListener('mouseleave', function(){});
+    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter(buttonToNotInteract));
+    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave(buttonToNotInteract));
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
