@@ -13,7 +13,7 @@ var englishButton = document.getElementById('englishButton');
 var contactButton = document.getElementById('contactButton');
 
 ///////////// 1- ORDERED INSTRUCTIONS
-console.log("V1.112");                           // Debug version
+console.log("V1.113");                           // Debug version
 toggleContentBasedOnURL();                      // Called of first page load
 window.onhashchange = toggleContentBasedOnURL;  // Call everytime the page changes
 
@@ -155,7 +155,7 @@ function toggleContentBasedOnURL() {        // Called after navigation methods
         console.log("No existe esta página.");
     }
 
-    switchKeypadButtons();
+    //switchKeypadButtons();
 }
 
 function switchKeypadButtons(){
