@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.121");                          // Debug version
+console.log("V1.122");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -201,79 +201,63 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
 function switchKeypadButtons(){
     console.log("switchKeypadButtons() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
     if (getLanguage() === 'ES' & getSite() === 'Home'){
-        lauglitchButton.disabled = true; // true === doesnt work ; false === works
-        spanishButton.disabled = true;  
         removeInteraction(lauglitchButton);
         removeInteraction(spanishButton);
 
-        englishButton.disabled = false;
-        contactButton.disabled = false; 
-        englishBFunc = redirectToHomeEN;
-        contactBFunc = redirectToContactES;
         addInteraction(englishButton);
         addInteraction(contactButton);
+        englishBFunc = redirectToHomeEN;
+        contactBFunc = redirectToContactES;
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
-        lauglitchButton.disabled = true; 
-        englishButton.disabled = true;
         removeInteraction(lauglitchButton);
         removeInteraction(englishButton);
 
-        spanishButton.disabled = false;
-        contactButton.disabled = false;
-        spanishBFunc = redirectToHomeES;
-        contactBFunc = redirectToContactEN;
         addInteraction(spanishButton);
         addInteraction(contactButton);
+        spanishBFunc = redirectToHomeES;
+        contactBFunc = redirectToContactEN;
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
-        spanishButton.disabled = true;
-        contactButton.disabled = true;
         removeInteraction(spanishButton);
         removeInteraction(contactButton);
 
-        lauglitchButton.disabled = false;
-        englishButton.disabled = false;
-        lauglitchBFunc = redirectToHomeES;
-        englishBFunc = redirectToContactEN;
         addInteraction(lauglitchButton);
         addInteraction(englishButton);
+        lauglitchBFunc = redirectToHomeES;
+        englishBFunc = redirectToContactEN;
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
-        englishButton.disabled = true;
-        contactButton.disabled = true;
         removeInteraction(englishButton);
         removeInteraction(contactButton);
         
-        lauglitchButton.disabled = false;
-        spanishButton.disabled = false;
-        lauglitchBFunc = redirectToHomeEN;
-        spanishBFunc = redirectToContactES;
         addInteraction(lauglitchButton);
         addInteraction(spanishButton);
+        lauglitchBFunc = redirectToHomeEN;
+        spanishBFunc = redirectToContactES;
     } else {
         console.log('Variables de localización no identificadas.')
     }
 }
 
-function onMouseEnter(button) {
-    button.style.backgroundColor = 'blue';
-    button.style.color = 'white';
-}
-  
-function onMouseLeave(button) {
-    button.style.backgroundColor = '';
-    button.style.color = '';
-}
-
 // Remove from parameter button every Event Listener
-function removeInteraction(button){
-    button.removeEventListener('click', function(){}); 
-    button.removeEventListener('mouseenter', onMouseEnter);
-    button.removeEventListener('mouseleave', onMouseLeave);
+function removeInteraction(buttonToNotInteract){
+    buttonToNotInteract.disabled = true;
+    buttonToNotInteract.removeEventListener('click', function(){}); 
+    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter);
+    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave);
+}
+// Add to parameter button Event Listeners with empty functions 
+function addInteraction(buttonToInteract){
+    buttonToInteract.disabled = false;
+    buttonToInteract.addEventListener('mouseenter', onMouseEnter(button));
+    buttonToInteract.addEventListener('mouseleave', onMouseLeave(button));
+}
+function onMouseEnter(b1) {
+    b1.style.backgroundColor = 'blue';
+    b1.style.color = 'white';
+}
+function onMouseLeave(b2) {
+    b2.style.backgroundColor = '';
+    b2.style.color = '';
 }
 
-// Add to parameter button Event Listeners with empty functions 
-function addInteraction(button){
-    button.addEventListener('mouseenter', onMouseEnter(button));
-    button.addEventListener('mouseleave', onMouseLeave(button));
-}
 
 ///////////// END /////////////
