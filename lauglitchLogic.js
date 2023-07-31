@@ -254,7 +254,7 @@ function removeInteraction(buttonToNotInteract){
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
-    buttonToNotInteract.classList.toggle('remove-hover-effect', true);
+    buttonToInteract.classList.toggle('remove-hover-effect', true);
     buttonToInteract.disabled = false;
     buttonToInteract.addEventListener('mouseenter', onMouseEnter(buttonToInteract));
     buttonToInteract.addEventListener('mouseleave', onMouseLeave(buttonToInteract));
