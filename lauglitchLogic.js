@@ -165,7 +165,7 @@ function switchKeypadButtons(){
         contactButton.disabled = false; 
         lauglitchButton.disabled = true;
 
-        englishButton.onclick = redirectToHomeEN();
+        englishButton.click = redirectToHomeEN();
 
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
         spanishButton.disabled = false;
@@ -173,7 +173,7 @@ function switchKeypadButtons(){
         contactButton.disabled = false;
         lauglitchButton.disabled = true;
 
-        spanishButton.onclick = redirectToHomeES();
+        spanishButton.click = redirectToHomeES();
       
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
         spanishButton.disabled = true;
@@ -181,8 +181,8 @@ function switchKeypadButtons(){
         contactButton.disabled = true;
         lauglitchButton.disabled = false;
 
-        englishButton.onclick = redirectToContactEN();
-        lauglitchButton.onclick = redirectToHomeES();
+        englishButton.click = redirectToContactEN();
+        lauglitchButton.click = redirectToHomeES();
       
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
         spanishButton.disabled = false;
@@ -190,8 +190,8 @@ function switchKeypadButtons(){
         contactButton.disabled = true;
         lauglitchButton.disabled = false;
 
-        spanishButton.onclick = redirectToContactES();
-        lauglitchButton.onclick = redirectToHomeEN();
+        spanishButton.click = redirectToContactES();
+        lauglitchButton.click = redirectToHomeEN();
 
     } else {
         console.log('Variables de localización no identificadas.')
