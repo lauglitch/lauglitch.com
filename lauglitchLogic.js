@@ -3,7 +3,7 @@
 // @ts-nocheck
 // @mime-type text/javascript
 
-// 0- VARIABLES
+// 0.0 - VARIABLES
 var language = "ES";    // ES || EN
 var site = "Home";      // Home || Contact
 var webVersion = 'PC';  // PC || Mobile 
@@ -17,6 +17,7 @@ let spanishBFunc = function() {};
 let englishBFunc = function() {};
 let contactBFunc = function() {};
 
+// 0.1 - VARIABLE EVENTS
 lauglitchButton.addEventListener("click", function () {
     console.log("lauglitchButton clicked");
     lauglitchBFunc();
@@ -49,12 +50,7 @@ contactButton.addEventListener("click", function () {
 contactButton.addEventListener('mouseenter', onMouseEnter(contactButton));
 contactButton.addEventListener('mouseleave', onMouseLeave(contactButton));
 
-///////////// 1- INSTRUCTIONS
-console.log("V1.117");                          // Debug version
-
-toggleContentBasedOnURL();                      // Called on first page load
-
-///////////// 2- GETTERS AND SETTERS
+///////////// 1 - GETTERS AND SETTERS
 function setLanguage(lang) {
     language = lang;
 }
@@ -79,7 +75,12 @@ function getDomain(url) {
     return a.hostname;
 }
 
-///////////// 3- NAVIGATION
+///////////// 2 - INSTRUCTIONS
+console.log("V1.119");                          // Debug version
+
+toggleContentBasedOnURL();                      // Called on first page load
+
+///////////// 3 - NAVIGATION
 function redirectToHomeES() {
     window.location.href = "https://www.lauglitch.com/";
     console.log("Navigate to ES-Home");
@@ -97,10 +98,9 @@ function redirectToContactEN() {
     console.log("Navigate to EN-Contact");
 }
 
-///////////// 4- GRAPHICS
+///////////// 4 - GRAPHICS
 function toggleContentBasedOnURL() {        // Called after navigation methods. Check current URL and set its content
     var currentURL = window.location.href;
-    console.log("toggleContentBasedOnURL() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
 
     if (currentURL === "https://www.lauglitch.com/") {
         setLanguage('ES');
@@ -202,42 +202,58 @@ function switchKeypadButtons(){
     console.log("switchKeypadButtons() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
     if (getLanguage() === 'ES' & getSite() === 'Home'){
         lauglitchButton.disabled = true;
+        lauglitchButton.style.pointerEvents = 'none';
         spanishButton.disabled = true;  // true === doesnt work ; false === works
+        spanishButton.style.pointerEvents = 'none';
         lauglitchButton = function() {};
         spanishButton = function() {};
 
         englishButton.disabled = false;
+        englishButton.style.pointerEvents = 'auto';
         contactButton.disabled = false; 
+        contactButton.style.pointerEvents = 'auto';
         englishBFunc = redirectToHomeEN;
         contactBFunc = redirectToContactES;
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
-        lauglitchButton.disabled = true;  
+        lauglitchButton.disabled = true; 
+        lauglitchButton.style.pointerEvents = 'none';
         englishButton.disabled = true;
+        englishButton.style.pointerEvents = 'none';
         lauglitchButton = function() {};
         englishButton = function() {};
 
         spanishButton.disabled = false;
+        spanishButton.style.pointerEvents = 'auto';
         contactButton.disabled = false;
+        contactButton.style.pointerEvents = 'auto';
         spanishBFunc = redirectToHomeES;
         contactBFunc = redirectToContactEN;
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
         spanishButton.disabled = true;
+        spanishButton.style.pointerEvents = 'none';
         contactButton.disabled = true;
+        contactButton.style.pointerEvents = 'none';
         spanishButton = function() {};
         contactButton = function() {};
 
         lauglitchButton.disabled = false;
+        lauglitchButton.style.pointerEvents = 'auto';
         englishButton.disabled = false;
+        englishButton.style.pointerEvents = 'auto';
         lauglitchBFunc = redirectToHomeES;
         englishBFunc = redirectToContactEN;
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
         englishButton.disabled = true;
+        englishButton.style.pointerEvents = 'none';
         contactButton.disabled = true;
+        contactButton.style.pointerEvents = 'none';
         englishButton = function() {};
         contactButton = function() {};
         
         lauglitchButton.disabled = false;
+        lauglitchButton.style.pointerEvents = 'auto';
         spanishButton.disabled = false;
+        spanishButton.style.pointerEvents = 'auto';
         lauglitchBFunc = redirectToHomeEN;
         spanishBFunc = redirectToContactES;
     } else {
@@ -255,3 +271,5 @@ function onMouseLeave(b) {
     b.style.backgroundColor = '';
     b.style.color = '';
 }
+
+///////////// END /////////////
