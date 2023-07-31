@@ -4035,3 +4035,15 @@ textarea.input-lg {
 .botonLogo:hover img {
     opacity: 0.5;
 }
+
+.transparent-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+.transparent-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
