@@ -4020,13 +4020,7 @@ textarea.input-lg {
     width: 245px;
     height: 90px;
 }
-.botonLogo img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-}
-.botonLogo:hover img {
+.botonLogo:hover {
     opacity: 0.5;
 }
 .transparent-button {
@@ -4041,10 +4035,4 @@ textarea.input-lg {
 }
 .buttonClicked {
     filter: brightness(1.2);
-}
-.remove-hover-effect:hover img {
-    filter: none !important;
-    display: block;
-    width: 100%;
-    height: auto;
 }
