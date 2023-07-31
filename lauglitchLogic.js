@@ -107,6 +107,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Home');
         setWebVersion('PC');
 
+        spanishButton.classList.add('clickedButton');
+        englishButton.classList.remove('clickedButton');
+
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
 
@@ -117,6 +120,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Home');
         setWebVersion('PC');
+
+        englishButton.classList.add('clickedButton');
+        spanishButton.classList.remove('clickedButton');
 
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
@@ -129,6 +135,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Contact');
         setWebVersion('PC');
 
+        spanishButton.classList.add('clickedButton');
+        englishButton.classList.remove('clickedButton');
+
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
 
@@ -139,6 +148,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Contact');
         setWebVersion('PC');
+
+        englishButton.classList.add('clickedButton');
+        spanishButton.classList.remove('clickedButton');
 
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
@@ -153,6 +165,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Home');
         setWebVersion('Mobile');
 
+        spanishButton.classList.add('clickedButton');
+        englishButton.classList.remove('clickedButton');
+
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
 
@@ -163,6 +178,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Home');
         setWebVersion('Mobile');
+
+        englishButton.classList.add('clickedButton');
+        spanishButton.classList.remove('clickedButton');
 
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
@@ -175,6 +193,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Contact');
         setWebVersion('Mobile');
 
+        spanishButton.classList.add('clickedButton');
+        englishButton.classList.remove('clickedButton');
+
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
 
@@ -186,6 +207,9 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Contact');
         setWebVersion('Mobile');
 
+        englishButton.classList.add('clickedButton');
+        spanishButton.classList.remove('clickedButton');
+        
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
 
@@ -212,6 +236,9 @@ function switchKeypadButtons(){
         removeInteraction(lauglitchButton);
         removeInteraction(englishButton);
 
+        englishButton.classList.add('clickedButton');
+        spanishButton.classList.remove('clickedButton');
+
         addInteraction(spanishButton);
         addInteraction(contactButton);
         spanishBFunc = redirectToHomeES;
@@ -228,6 +255,9 @@ function switchKeypadButtons(){
         removeInteraction(englishButton);
         removeInteraction(contactButton);
         
+        englishButton.classList.add('clickedButton');
+        spanishButton.classList.remove('clickedButton');
+
         addInteraction(lauglitchButton);
         addInteraction(spanishButton);
         lauglitchBFunc = redirectToHomeEN;
