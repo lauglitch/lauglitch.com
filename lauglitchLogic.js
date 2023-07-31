@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.122");                          // Debug version
+console.log("V1.123");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -247,8 +247,8 @@ function removeInteraction(buttonToNotInteract){
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
     buttonToInteract.disabled = false;
-    buttonToInteract.addEventListener('mouseenter', onMouseEnter(button));
-    buttonToInteract.addEventListener('mouseleave', onMouseLeave(button));
+    buttonToInteract.addEventListener('mouseenter', onMouseEnter(buttonToInteract));
+    buttonToInteract.addEventListener('mouseleave', onMouseLeave(buttonToInteract));
 }
 function onMouseEnter(b1) {
     b1.style.backgroundColor = 'blue';
