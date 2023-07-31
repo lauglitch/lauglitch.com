@@ -106,9 +106,7 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('ES');
         setSite('Home');
         setWebVersion('PC');
-
-        spanishButton.classList.add('clickedButton');
-        englishButton.classList.remove('clickedButton');
+        lauglitchButton.classList.remove('botonLogo');
 
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
@@ -121,9 +119,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Home');
         setWebVersion('PC');
 
-        englishButton.classList.add('clickedButton');
-        spanishButton.classList.remove('clickedButton');
-
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
 
@@ -135,9 +130,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Contact');
         setWebVersion('PC');
 
-        spanishButton.classList.add('clickedButton');
-        englishButton.classList.remove('clickedButton');
-
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
 
@@ -148,9 +140,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Contact');
         setWebVersion('PC');
-
-        englishButton.classList.add('clickedButton');
-        spanishButton.classList.remove('clickedButton');
 
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
@@ -165,9 +154,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Home');
         setWebVersion('Mobile');
 
-        spanishButton.classList.add('clickedButton');
-        englishButton.classList.remove('clickedButton');
-
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
 
@@ -178,9 +164,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Home');
         setWebVersion('Mobile');
-
-        englishButton.classList.add('clickedButton');
-        spanishButton.classList.remove('clickedButton');
 
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
@@ -193,9 +176,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Contact');
         setWebVersion('Mobile');
 
-        spanishButton.classList.add('clickedButton');
-        englishButton.classList.remove('clickedButton');
-
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
 
@@ -206,9 +186,6 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Contact');
         setWebVersion('Mobile');
-
-        englishButton.classList.add('clickedButton');
-        spanishButton.classList.remove('clickedButton');
 
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
@@ -269,13 +246,15 @@ function switchKeypadButtons(){
 
 // Remove from parameter button every Event Listener
 function removeInteraction(buttonToNotInteract){
+    buttonToNotInteract.classList.toggle('remove-hover-effect', false);
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
-    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter(buttonToNotInteract));
-    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave(buttonToNotInteract));
+    buttonToNotInteract.removeEventListener('mouseenter', function(){});
+    buttonToNotInteract.removeEventListener('mouseleave', function(){});
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
+    buttonToNotInteract.classList.toggle('remove-hover-effect', true);
     buttonToInteract.disabled = false;
     buttonToInteract.addEventListener('mouseenter', onMouseEnter(buttonToInteract));
     buttonToInteract.addEventListener('mouseleave', onMouseLeave(buttonToInteract));
@@ -288,12 +267,7 @@ function onMouseLeave(b2) {
     b2.style.backgroundColor = '';
     b2.style.color = '';
 }
-function revertOnMouseEnter(b1) {
 
-}
-function revertOnMouseLeave(b2) {
-
-}
 
 
 ///////////// END /////////////
