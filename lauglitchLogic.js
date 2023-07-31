@@ -7,35 +7,40 @@
 var language = "ES";    // ES || EN
 var site = "Home";      // Home || Contact
 var webVersion = 'PC';  // PC || Mobile 
+
 var lauglitchButton = document.getElementById('lauglitchButton');
 var spanishButton = document.getElementById('spanishButton');
 var englishButton = document.getElementById('englishButton');
 var contactButton = document.getElementById('contactButton');
-let lauglitchBFunc = redirectToHomeES;
-let spanishBFunc = redirectToHomeES;
-let englishBFunc = redirectToHomeEN;
-let contactBFunc = redirectToContactES;
-
-///////////// 1- ORDERED INSTRUCTIONS
-console.log("V1.113");                           // Debug version
-toggleContentBasedOnURL();                      // Called of first page load
-
+let lauglitchBFunc;
+let spanishBFunc;
+let englishBFunc;
+let contactBFunc;
 lauglitchButton.addEventListener("click", function () {
+    console.log("lauglitchButton clicked");
     lauglitchBFunc();
     toggleContentBasedOnURL();
 });
 spanishButton.addEventListener("click", function () {
+    console.log("spanishButton clicked");
     spanishBFunc();
     toggleContentBasedOnURL();
 });
 englishButton.addEventListener("click", function () {
+    console.log("englishButton clicked");
     englishBFunc();
     toggleContentBasedOnURL();
 });
 contactButton.addEventListener("click", function () {
+    console.log("contactButton clicked");
     contactBFunc();
     toggleContentBasedOnURL();
 });
+
+///////////// 1- INSTRUCTIONS
+console.log("V1.115");                          // Debug version
+
+toggleContentBasedOnURL();                      // Called on first page load
 
 ///////////// 2- GETTERS AND SETTERS
 function setLanguage(lang) {
@@ -62,7 +67,7 @@ function getDomain(url) {
     return a.hostname;
 }
 
-///////////// 3- NAVIGATION METHODS
+///////////// 3- NAVIGATION
 function redirectToHomeES() {
     window.location.href = "https://www.lauglitch.com/";
 }
@@ -76,8 +81,8 @@ function redirectToContactEN() {
     window.location.href = "https://www.lauglitch.com/p/contact.html";
 }
 
-///////////// 4- ENGINE METHODS
-function toggleContentBasedOnURL() {        // Called after navigation methods
+///////////// 4- GRAPHICS
+function toggleContentBasedOnURL() {        // Called after navigation methods. Check current URL and set its content
     var currentURL = window.location.href;
     console.log(currentURL);
 
@@ -180,25 +185,37 @@ function toggleContentBasedOnURL() {        // Called after navigation methods
 
 function switchKeypadButtons(){
     if (getLanguage() === 'ES' & getSite() === 'Home'){
+        lauglitchButton.disabled = true;
         spanishButton.disabled = true;  // true === OFF ; false === ON
+
         englishButton.disabled = false;
         contactButton.disabled = false; 
-        lauglitchButton.disabled = true;
+        englishBFunc = redirectToHomeEN;
+        contactBFunc = redirectToContactES;
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
-        spanishButton.disabled = false;
-        englishButton.disabled = true;
-        contactButton.disabled = false;
         lauglitchButton.disabled = true;  
+        englishButton.disabled = true;
+
+        spanishButton.disabled = false;
+        contactButton.disabled = false;
+        spanishBFunc = redirectToHomeES;
+        contactBFunc = redirectToContactEN;
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
         spanishButton.disabled = true;
-        englishButton.disabled = false;
         contactButton.disabled = true;
+
         lauglitchButton.disabled = false;
+        englishButton.disabled = false;
+        lauglitchBFunc = redirectToHomeES;
+        englishBFunc = redirectToContactEN;
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
-        spanishButton.disabled = false;
         englishButton.disabled = true;
         contactButton.disabled = true;
+
         lauglitchButton.disabled = false;
+        spanishButton.disabled = false;
+        lauglitchBFunc = redirectToHomeEN;
+        spanishBFunc = redirectToContactES;
     } else {
         console.log('Variables de localización no identificadas.')
     }
