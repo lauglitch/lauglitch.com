@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.125");                          // Debug version
+console.log("V1.126");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -106,7 +106,8 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('ES');
         setSite('Home');
         setWebVersion('PC');
-        lauglitchButton.classList.remove('botonLogo');
+        lauglitchButton.classList.remove('.botonLogo img');
+        lauglitchButton.classList.remove('.botonLogo:hover img');
 
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
@@ -243,8 +244,8 @@ function removeInteraction(buttonToNotInteract){
 
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
-    buttonToNotInteract.removeEventListener('mouseenter', onMouseEnter(buttonToNotInteract));
-    buttonToNotInteract.removeEventListener('mouseleave', onMouseLeave(buttonToNotInteract));
+    buttonToNotInteract.removeEventListener('mouseenter', function(){});
+    buttonToNotInteract.removeEventListener('mouseleave', function(){});
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
