@@ -4044,4 +4044,7 @@ textarea.input-lg {
 }
 .remove-hover-effect:hover img {
     filter: none !important;
+    display: block;
+    width: 100%;
+    height: auto;
 }
