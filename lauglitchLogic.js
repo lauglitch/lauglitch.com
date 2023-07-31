@@ -17,7 +17,7 @@ let englishBFunc = redirectToHomeEN;
 let contactBFunc = redirectToContactES;
 
 ///////////// 1- ORDERED INSTRUCTIONS
-console.log("V1.111");                           // Debug version
+console.log("V1.112");                           // Debug version
 toggleContentBasedOnURL();                      // Called of first page load
 
 lauglitchButton.addEventListener("click", function () {
@@ -184,35 +184,21 @@ function switchKeypadButtons(){
         englishButton.disabled = false;
         contactButton.disabled = false; 
         lauglitchButton.disabled = true;
-
-        englishButton.click = redirectToHomeEN();
-
     } else if (getLanguage() === 'EN' & getSite() === 'Home'){
         spanishButton.disabled = false;
         englishButton.disabled = true;
         contactButton.disabled = false;
-        lauglitchButton.disabled = true;
-
-        spanishButton.click = redirectToHomeES();
-      
+        lauglitchButton.disabled = true;  
     } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
         spanishButton.disabled = true;
         englishButton.disabled = false;
         contactButton.disabled = true;
         lauglitchButton.disabled = false;
-
-        englishButton.click = redirectToContactEN();
-        lauglitchButton.click = redirectToHomeES();
-      
     } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
         spanishButton.disabled = false;
         englishButton.disabled = true;
         contactButton.disabled = true;
         lauglitchButton.disabled = false;
-
-        spanishButton.click = redirectToContactES();
-        lauglitchButton.click = redirectToHomeEN();
-
     } else {
         console.log('Variables de localización no identificadas.')
     }
