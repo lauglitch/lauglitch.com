@@ -101,13 +101,17 @@ function redirectToContactEN() {
 ///////////// 4 - GRAPHICS
 function toggleContentBasedOnURL() {        // Called after navigation methods. Check current URL and set its content
     var currentURL = window.location.href;
+    const imageLauglitch = lauglitchButton.querySelector('img');
+    const imageSpanish = spanishButton.querySelector('img');
+    const imageEnglish = englishButton.querySelector('img');
+    const imageContact = contactButton.querySelector('img');
 
     if (currentURL === "https://www.lauglitch.com/") {
         setLanguage('ES');
         setSite('Home');
         setWebVersion('PC');
-        lauglitchButton.classList.remove('.botonLogo img');
-        lauglitchButton.classList.remove('.botonLogo:hover img');
+        
+        imageLauglitch.classList.remove('hover-effect');
 
         // BODY
         document.getElementById('bodyInicio').style.display = 'block';
@@ -120,6 +124,8 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Home');
         setWebVersion('PC');
 
+        imageLauglitch.classList.remove('hover-effect');
+
         // BODY
         document.getElementById('bodyHome').style.display = 'block';
 
@@ -131,6 +137,8 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setSite('Contact');
         setWebVersion('PC');
 
+        imageLauglitch.classList.add('hover-effect');
+
         // BODY
         document.getElementById('bodyContacto').style.display = 'block';
 
@@ -141,6 +149,8 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         setLanguage('EN');
         setSite('Contact');
         setWebVersion('PC');
+        
+        imageLauglitch.classList.add('hover-effect');
 
         // BODY
         document.getElementById('bodyContact').style.display = 'block';
