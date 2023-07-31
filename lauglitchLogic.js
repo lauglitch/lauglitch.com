@@ -76,7 +76,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.124");                          // Debug version
+console.log("V1.125");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -246,7 +246,7 @@ function switchKeypadButtons(){
 
 // Remove from parameter button every Event Listener
 function removeInteraction(buttonToNotInteract){
-    buttonToNotInteract.classList.toggle('remove-hover-effect', false);
+
     buttonToNotInteract.disabled = true;
     buttonToNotInteract.removeEventListener('click', function(){}); 
     buttonToNotInteract.removeEventListener('mouseenter', function(){});
@@ -254,7 +254,7 @@ function removeInteraction(buttonToNotInteract){
 }
 // Add to parameter button Event Listeners with empty functions 
 function addInteraction(buttonToInteract){
-    buttonToInteract.classList.toggle('remove-hover-effect', true);
+
     buttonToInteract.disabled = false;
     buttonToInteract.addEventListener('mouseenter', onMouseEnter(buttonToInteract));
     buttonToInteract.addEventListener('mouseleave', onMouseLeave(buttonToInteract));
