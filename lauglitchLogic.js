@@ -16,29 +16,41 @@ let lauglitchBFunc = function() {};
 let spanishBFunc = function() {};
 let englishBFunc = function() {};
 let contactBFunc = function() {};
+
 lauglitchButton.addEventListener("click", function () {
     console.log("lauglitchButton clicked");
     lauglitchBFunc();
     toggleContentBasedOnURL();
 });
+lauglitchButton.addEventListener('mouseenter', onMouseEnter(lauglitchButton));
+lauglitchButton.addEventListener('mouseleave', onMouseLeave(lauglitchButton));
+
 spanishButton.addEventListener("click", function () {
     console.log("spanishButton clicked");
     spanishBFunc();
     toggleContentBasedOnURL();
 });
+spanishButton.addEventListener('mouseenter', onMouseEnter(spanishButton));
+spanishButton.addEventListener('mouseleave', onMouseLeave(spanishButton));
+
 englishButton.addEventListener("click", function () {
     console.log("englishButton clicked");
     englishBFunc();
     toggleContentBasedOnURL();
 });
+englishButton.addEventListener('mouseenter', onMouseEnter(englishButton));
+englishButton.addEventListener('mouseleave', onMouseLeave(englishButton));
+
 contactButton.addEventListener("click", function () {
     console.log("contactButton clicked");
     contactBFunc();
     toggleContentBasedOnURL();
 });
+contactButton.addEventListener('mouseenter', onMouseEnter(contactButton));
+contactButton.addEventListener('mouseleave', onMouseLeave(contactButton));
 
 ///////////// 1- INSTRUCTIONS
-console.log("V1.116");                          // Debug version
+console.log("V1.117");                          // Debug version
 
 toggleContentBasedOnURL();                      // Called on first page load
 
@@ -70,21 +82,25 @@ function getDomain(url) {
 ///////////// 3- NAVIGATION
 function redirectToHomeES() {
     window.location.href = "https://www.lauglitch.com/";
+    console.log("Navigate to ES-Home");
 }
 function redirectToHomeEN() {
     window.location.href = "https://www.lauglitch.com/p/home.html";
+    console.log("Navigate to EN-Home");
 }
 function redirectToContactES() {
     window.location.href = "https://www.lauglitch.com/p/contacto.html";
+    console.log("Navigate to ES-Contact");
 }
 function redirectToContactEN() {
     window.location.href = "https://www.lauglitch.com/p/contact.html";
+    console.log("Navigate to EN-Contact");
 }
 
 ///////////// 4- GRAPHICS
 function toggleContentBasedOnURL() {        // Called after navigation methods. Check current URL and set its content
     var currentURL = window.location.href;
-    console.log(currentURL);
+    console.log("toggleContentBasedOnURL() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
 
     if (currentURL === "https://www.lauglitch.com/") {
         setLanguage('ES');
@@ -179,11 +195,11 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
     } else {
         console.log("No existe esta página.");
     }
-
     switchKeypadButtons();
 }
 
 function switchKeypadButtons(){
+    console.log("switchKeypadButtons() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
     if (getLanguage() === 'ES' & getSite() === 'Home'){
         lauglitchButton.disabled = true;
         spanishButton.disabled = true;  // true === doesnt work ; false === works
@@ -228,4 +244,14 @@ function switchKeypadButtons(){
         console.log('Variables de localización no identificadas.')
     }
 
+}
+
+function onMouseEnter(b) {
+    b.style.backgroundColor = 'blue';
+    b.style.color = 'white';
+}
+  
+function onMouseLeave(b) {
+    b.style.backgroundColor = '';
+    b.style.color = '';
 }
