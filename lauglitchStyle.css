@@ -2593,6 +2593,22 @@ textarea.form-control {
     .tituloContacto {
         margin-left: 5%;
     }
+
+    #rowLinks {
+        margin-bottom: 0%;
+    }
+    #spanishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #englishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #contactLinks {
+        margin-top: 5%;
+        margin-left: 0%;
+    }
 }
 
 @media (min-width:768px) and (max-width:991px) {
@@ -2612,6 +2628,22 @@ textarea.form-control {
     .visible-sm {
         display: block !important
     }
+
+    #rowLinks {
+        margin-bottom: 0%;
+    }
+    #spanishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #englishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #contactLinks {
+        margin-top: 5%;
+        margin-left: 0%;
+    }
 }
 
 @media (min-width:992px) and (max-width:1199px) {
@@ -2630,6 +2662,22 @@ textarea.form-control {
     }
     .visible-md {
         display: block !important
+    }
+
+    #rowLinks {
+        margin-bottom: 0%;
+    }
+    #spanishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #englishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #contactLinks {
+        margin-top: 5%;
+        margin-left: 0%;
     }
 }
 
@@ -2698,6 +2746,22 @@ textarea.form-control {
     }
     .visible-xs {
         display: block !important
+    }
+
+    #rowLinks {
+        margin-bottom: 0%;
+    }
+    #spanishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #englishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #contactLinks {
+        margin-top: 5%;
+        margin-left: 0%;
     }
 }
 
@@ -2869,20 +2933,12 @@ textarea.form-control {
     .col-sm-offset-0 {
         margin-left: 0
     }
-    #contactLinks {
-        margin-top: 5%;
-        margin-left: 0%;
-    }
     .container-fluid>.navbar-collapse,
     .container-fluid>.navbar-header,
     .container>.navbar-collapse,
     .container>.navbar-header {
         margin-right: 0;
         margin-left: 0
-    }
-    #englishFindOnText {
-        margin-left: -2%;
-        display: block;
     }
     .form-inline .form-group {
         display: inline-block;
@@ -3069,12 +3125,21 @@ textarea.form-control {
     .navbar-toggle {
         display: none
     }
-    .rowLinks {
+
+    #rowLinks {
         margin-bottom: 0%;
     }
     #spanishFindOnText {
         margin-left: -2%;
         display: block;
+    }
+    #englishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #contactLinks {
+        margin-top: 5%;
+        margin-left: 0%;
     }
 }
 
@@ -3254,12 +3319,25 @@ textarea.form-control {
         margin-left: -2%;
         display: block;
     }
-    #rowLinks {
-        margin-bottom: 0%;
-    }
     .spanishFindOnText {
         margin-left: -2%;
         display: block;
+    }
+
+    #rowLinks {
+        margin-bottom: 0%;
+    }
+    #spanishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #englishFindOnText {
+        margin-left: -2%;
+        display: block;
+    }
+    #contactLinks {
+        margin-top: 5%;
+        margin-left: 0%;
     }
 }
 
