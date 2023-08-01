@@ -101,7 +101,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.127");                          // Debug version
+console.log("V1.128");                          // Debug version
 
 toggleContentBasedOnURL2();                      // Called on first page load
 
@@ -245,12 +245,12 @@ function setDisplay(){
     webElements.forEach((elem) => {
         // ES-Home
         if (elem.lang === lang && elem.site === site) {
-            toShow.push(elemento.elementoHTML);
+            toShow.push(elem[0]);
         } else if (elem.lang === 'ALL' && elem.site === site){
-            toShow.push(elemento.elementoHTML);
+            toShow.push(elem[0]);
         }
         else {
-            toHide.push(elemento.elementoHTML);
+            toHide.push(elem[0]);
         }
     });
 
