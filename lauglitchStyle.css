@@ -2869,7 +2869,7 @@ textarea.form-control {
     .col-sm-offset-0 {
         margin-left: 0
     }
-    .contactLinks {
+    #contactLinks {
         margin-top: 5%;
         margin-left: 0%;
     }
@@ -2880,7 +2880,7 @@ textarea.form-control {
         margin-right: 0;
         margin-left: 0
     }
-    .englishFindOnText {
+    #englishFindOnText {
         margin-left: -2%;
         display: block;
     }
@@ -3072,7 +3072,7 @@ textarea.form-control {
     .rowLinks {
         margin-bottom: 0%;
     }
-    .spanishFindOnText {
+    #spanishFindOnText {
         margin-left: -2%;
         display: block;
     }
@@ -3254,7 +3254,7 @@ textarea.form-control {
         margin-left: -2%;
         display: block;
     }
-    .rowLinks {
+    #rowLinks {
         margin-bottom: 0%;
     }
     .spanishFindOnText {
