@@ -8,6 +8,7 @@ var language = "ES";    // ES || EN
 var site = "Home";      // Home || Contact
 var webVersion = 'PC';  // PC || Mobile 
 
+//// Used to switch language functionalities in order to current url
 var lauglitchButton = document.getElementById('lauglitchButton');
 var spanishButton = document.getElementById('spanishButton');
 var englishButton = document.getElementById('englishButton');
@@ -17,11 +18,35 @@ let spanishBFunc = function() {};
 let englishBFunc = function() {};
 let contactBFunc = function() {};
 
+//// Used to show or hide web elements
+var bodyHome = document.getElementById('bodyHome');
+var bodyContact = document.getElementById('bodyContact');
+var spanishBio = document.getElementById('spanishBio');
+var englishBio = document.getElementById('englishBio');
+var spanishContactTitle = document.getElementById('spanishContactTitle');
+var englishContactTitle = document.getElementById('englishContactTitle');
+var spanishForm = document.getElementById('spanishForm');
+var englishForm = document.getElementById('englishForm');
+var spanishFindOnText = document.getElementById('spanishFindOnText');
+var englishFindOnText = document.getElementById('englishFindOnText');
+const webElements = [
+    { bodyHome, lang: 'ALL', site: 'Home' },
+    { bodyContact, lang: 'ALL', site: 'Contact' },
+    { spanishBio, lang: 'ES', site: 'Home' },
+    { englishBio, lang: 'EN', site: 'Home' },
+    { spanishContactTitle, lang: 'ES', site: 'Contact' },
+    { englishContactTitle, lang: 'EN', site: 'Contact' },
+    { spanishForm, lang: 'ES', site: 'Contact' },
+    { englishForm, lang: 'EN', site: 'Contact' },
+    { spanishFindOnText, lang: 'ES', site: 'Contact' },
+    { englishFindOnText, lang: 'EN', site: 'Contact' },
+]
+
 // 0.1 - VARIABLE EVENTS
 lauglitchButton.addEventListener("click", function () {
     console.log("lauglitchButton clicked");
     lauglitchBFunc();
-    toggleContentBasedOnURL();
+    toggleContentBasedOnURL2();
 });
 lauglitchButton.addEventListener('mouseenter', onMouseEnter(lauglitchButton));
 lauglitchButton.addEventListener('mouseleave', onMouseLeave(lauglitchButton));
@@ -29,7 +54,7 @@ lauglitchButton.addEventListener('mouseleave', onMouseLeave(lauglitchButton));
 spanishButton.addEventListener("click", function () {
     console.log("spanishButton clicked");
     spanishBFunc();
-    toggleContentBasedOnURL();
+    toggleContentBasedOnURL2();
 });
 spanishButton.addEventListener('mouseenter', onMouseEnter(spanishButton));
 spanishButton.addEventListener('mouseleave', onMouseLeave(spanishButton));
@@ -37,7 +62,7 @@ spanishButton.addEventListener('mouseleave', onMouseLeave(spanishButton));
 englishButton.addEventListener("click", function () {
     console.log("englishButton clicked");
     englishBFunc();
-    toggleContentBasedOnURL();
+    toggleContentBasedOnURL2();
 });
 englishButton.addEventListener('mouseenter', onMouseEnter(englishButton));
 englishButton.addEventListener('mouseleave', onMouseLeave(englishButton));
@@ -45,7 +70,7 @@ englishButton.addEventListener('mouseleave', onMouseLeave(englishButton));
 contactButton.addEventListener("click", function () {
     console.log("contactButton clicked");
     contactBFunc();
-    toggleContentBasedOnURL();
+    toggleContentBasedOnURL2();
 });
 contactButton.addEventListener('mouseenter', onMouseEnter(contactButton));
 contactButton.addEventListener('mouseleave', onMouseLeave(contactButton));
@@ -76,9 +101,9 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.126");                          // Debug version
+console.log("V1.127");                          // Debug version
 
-toggleContentBasedOnURL();                      // Called on first page load
+toggleContentBasedOnURL2();                      // Called on first page load
 
 ///////////// 3 - NAVIGATION
 function redirectToHomeES() {
@@ -99,7 +124,8 @@ function redirectToContactEN() {
 }
 
 ///////////// 4 - GRAPHICS
-function toggleContentBasedOnURL() {        // Called after navigation methods. Check current URL and set its content
+// Called after navigation methods. Check current URL and set its content
+function toggleContentBasedOnURL() {        
     var currentURL = window.location.href;
     const imageLauglitch = lauglitchButton.querySelector('img');
     const imageSpanish = spanishButton.querySelector('img');
@@ -115,7 +141,7 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
         imageLauglitch.style.removeProperty('filter');
 
         // BODY
-        document.getElementById('bodyInicio').style.display = 'block';
+        document.getElementById('bodyHome').style.display = 'block';
 
         document.getElementById('bodyHome').style.display = 'none';
         document.getElementById('bodyContacto').style.display = 'none';
@@ -210,6 +236,87 @@ function toggleContentBasedOnURL() {        // Called after navigation methods. 
     }
     switchKeypadButtons();
 }
+function setDisplay(){
+    const toShow = [];
+    const toHide = [];
+    let lang = getLanguage();
+    let site = getSite();
+
+    webElements.forEach((elem) => {
+        // ES-Home
+        if (elem.lang === lang && elem.site === site) {
+            toShow.push(elemento.elementoHTML);
+        } else if (elem.lang === 'ALL' && elem.site === site){
+            toShow.push(elemento.elementoHTML);
+        }
+        else {
+            toHide.push(elemento.elementoHTML);
+        }
+    });
+
+    toShow.forEach((elem) => {
+        elem.style.display = 'block';
+    });
+    toHide.forEach((elem) => {
+        elem.style.display = 'none';
+    });
+}
+function toggleContentBasedOnURL2() {        
+    var currentURL = window.location.href;
+    const imageLauglitch = lauglitchButton.querySelector('img');
+    const imageSpanish = spanishButton.querySelector('img');
+    const imageEnglish = englishButton.querySelector('img');
+    const imageContact = contactButton.querySelector('img');
+
+    if (currentURL === "https://www.lauglitch.com/") {
+        setLanguage('ES');
+        setSite('Home');
+        setWebVersion('PC');
+        
+        //lauglitchButton.style.removeProperty('filter');
+        //imageLauglitch.style.removeProperty('filter');
+    } else if (currentURL === 'https://www.lauglitch.com/p/home.html') {
+        setLanguage('EN');
+        setSite('Home');
+        setWebVersion('PC');
+
+        //imageLauglitch.classList.remove('hover-effect');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html') {
+        setLanguage('ES');
+        setSite('Contact');
+        setWebVersion('PC');
+
+        //imageLauglitch.classList.add('hover-effect');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html') {
+        setLanguage('EN');
+        setSite('Contact');
+        setWebVersion('PC');
+
+        //imageLauglitch.classList.add('hover-effect');
+    } 
+   // MOBILE VERSION
+    else if (currentURL === "https://www.lauglitch.com/?m=1") {
+        setLanguage('ES');
+        setSite('Home');
+        setWebVersion('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/home.html?m=1') {
+        setLanguage('EN');
+        setSite('Home');
+        setWebVersion('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html?m=1') {
+        setLanguage('ES');
+        setSite('Contact');
+        setWebVersion('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html?m=1') {
+        setLanguage('EN');
+        setSite('Contact');
+        setWebVersion('Mobile');
+    } else {
+        console.log("No existe esta página.");
+    }
+    setDisplay()
+    switchKeypadButtons();
+}
 
 function switchKeypadButtons(){
     console.log("switchKeypadButtons() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
@@ -273,7 +380,4 @@ function onMouseLeave(b2) {
     b2.style.backgroundColor = '';
     b2.style.color = '';
 }
-
-
-
 ///////////// END /////////////
