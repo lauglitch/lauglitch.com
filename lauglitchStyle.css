@@ -1133,11 +1133,41 @@ hr {
     .container {
         width: 750px
     }
+    .contactLinks {
+        margin-top:5%; 
+        margin-left:0%; 
+    }
+    .rowLinks{
+        margin-bottom:0%;
+    }
+    .spanishFindOnText{
+        margin-left: -2%; 
+        display: block;
+    }
+    .englishFindOnText{
+        margin-left: -2%; 
+        display: block;
+    }
 }
 
 @media (min-width:992px) {
     .container {
         width: 970px
+    }
+    .contactLinks {
+        margin-top:5%; 
+        margin-left:0%; 
+    }
+    .rowLinks{
+        margin-bottom:0%;
+    }
+    .spanishFindOnText{
+        margin-left: -2%; 
+        display: block;
+    }
+    .englishFindOnText{
+        margin-left: -2%; 
+        display: block;
     }
 }
 
