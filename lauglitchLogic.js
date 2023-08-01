@@ -30,16 +30,16 @@ var englishForm = document.getElementById('englishForm');
 var spanishFindOnText = document.getElementById('spanishFindOnText');
 var englishFindOnText = document.getElementById('englishFindOnText');
 const webElements = [
-    { bodyHome, lang: 'ALL', site: 'Home' },
-    { bodyContact, lang: 'ALL', site: 'Contact' },
-    { spanishBio, lang: 'ES', site: 'Home' },
-    { englishBio, lang: 'EN', site: 'Home' },
-    { spanishContactTitle, lang: 'ES', site: 'Contact' },
-    { englishContactTitle, lang: 'EN', site: 'Contact' },
-    { spanishForm, lang: 'ES', site: 'Contact' },
-    { englishForm, lang: 'EN', site: 'Contact' },
-    { spanishFindOnText, lang: 'ES', site: 'Contact' },
-    { englishFindOnText, lang: 'EN', site: 'Contact' },
+    { htmlElem: bodyHome, lang: 'ALL', site: 'Home' },
+    { htmlElem: bodyContact, lang: 'ALL', site: 'Contact' },
+    { htmlElem: spanishBio, lang: 'ES', site: 'Home' },
+    { htmlElem: englishBio, lang: 'EN', site: 'Home' },
+    { htmlElem: spanishContactTitle, lang: 'ES', site: 'Contact' },
+    { htmlElem: englishContactTitle, lang: 'EN', site: 'Contact' },
+    { htmlElem: spanishForm, lang: 'ES', site: 'Contact' },
+    { htmlElem: englishForm, lang: 'EN', site: 'Contact' },
+    { htmlElem: spanishFindOnText, lang: 'ES', site: 'Contact' },
+    { htmlElem: englishFindOnText, lang: 'EN', site: 'Contact' },
 ]
 
 // 0.1 - VARIABLE EVENTS
@@ -101,7 +101,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.128");                          // Debug version
+console.log("V1.129");                          // Debug version
 
 toggleContentBasedOnURL2();                      // Called on first page load
 
@@ -245,12 +245,12 @@ function setDisplay(){
     webElements.forEach((elem) => {
         // ES-Home
         if (elem.lang === lang && elem.site === site) {
-            toShow.push(elem[0]);
+            toShow.push(elem.htmlElem);
         } else if (elem.lang === 'ALL' && elem.site === site){
-            toShow.push(elem[0]);
+            toShow.push(elem.htmlElem);
         }
         else {
-            toHide.push(elem[0]);
+            toHide.push(elem.htmlElem);
         }
     });
 
