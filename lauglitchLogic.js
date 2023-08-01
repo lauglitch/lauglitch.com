@@ -101,7 +101,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.129");                          // Debug version
+console.log("V1.130");                          // Debug version
 
 toggleContentBasedOnURL2();                      // Called on first page load
 
@@ -236,6 +236,49 @@ function toggleContentBasedOnURL() {
     }
     switchKeypadButtons();
 }
+function toggleContentBasedOnURL2() {        
+    var currentURL = window.location.href;
+
+    if (currentURL === "https://www.lauglitch.com/") {
+        setLanguage('ES');
+        setSite('Home');
+        setWebVersion('PC');
+    } else if (currentURL === 'https://www.lauglitch.com/p/home.html') {
+        setLanguage('EN');
+        setSite('Home');
+        setWebVersion('PC');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html') {
+        setLanguage('ES');
+        setSite('Contact');
+        setWebVersion('PC');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html') {
+        setLanguage('EN');
+        setSite('Contact');
+        setWebVersion('PC');
+    } 
+   // MOBILE VERSION
+    else if (currentURL === "https://www.lauglitch.com/?m=1") {
+        setLanguage('ES');
+        setSite('Home');
+        setWebVersion('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/home.html?m=1') {
+        setLanguage('EN');
+        setSite('Home');
+        setWebVersion('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html?m=1') {
+        setLanguage('ES');
+        setSite('Contact');
+        setWebVersion('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html?m=1') {
+        setLanguage('EN');
+        setSite('Contact');
+        setWebVersion('Mobile');
+    } else {
+        console.log("No existe esta página.");
+    }
+    setDisplay()
+    switchKeypadButtons();
+}
 function setDisplay(){
     const toShow = [];
     const toHide = [];
@@ -261,63 +304,6 @@ function setDisplay(){
         elem.style.display = 'none';
     });
 }
-function toggleContentBasedOnURL2() {        
-    var currentURL = window.location.href;
-    const imageLauglitch = lauglitchButton.querySelector('img');
-    const imageSpanish = spanishButton.querySelector('img');
-    const imageEnglish = englishButton.querySelector('img');
-    const imageContact = contactButton.querySelector('img');
-
-    if (currentURL === "https://www.lauglitch.com/") {
-        setLanguage('ES');
-        setSite('Home');
-        setWebVersion('PC');
-        
-        //lauglitchButton.style.removeProperty('filter');
-        //imageLauglitch.style.removeProperty('filter');
-    } else if (currentURL === 'https://www.lauglitch.com/p/home.html') {
-        setLanguage('EN');
-        setSite('Home');
-        setWebVersion('PC');
-
-        //imageLauglitch.classList.remove('hover-effect');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html') {
-        setLanguage('ES');
-        setSite('Contact');
-        setWebVersion('PC');
-
-        //imageLauglitch.classList.add('hover-effect');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html') {
-        setLanguage('EN');
-        setSite('Contact');
-        setWebVersion('PC');
-
-        //imageLauglitch.classList.add('hover-effect');
-    } 
-   // MOBILE VERSION
-    else if (currentURL === "https://www.lauglitch.com/?m=1") {
-        setLanguage('ES');
-        setSite('Home');
-        setWebVersion('Mobile');
-    } else if (currentURL === 'https://www.lauglitch.com/p/home.html?m=1') {
-        setLanguage('EN');
-        setSite('Home');
-        setWebVersion('Mobile');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html?m=1') {
-        setLanguage('ES');
-        setSite('Contact');
-        setWebVersion('Mobile');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html?m=1') {
-        setLanguage('EN');
-        setSite('Contact');
-        setWebVersion('Mobile');
-    } else {
-        console.log("No existe esta página.");
-    }
-    setDisplay()
-    switchKeypadButtons();
-}
-
 function switchKeypadButtons(){
     console.log("switchKeypadButtons() --> url: " + window.location.href + " / Lang: " + getLanguage() + " / Site: " + getSite());
     if (getLanguage() === 'ES' & getSite() === 'Home'){
