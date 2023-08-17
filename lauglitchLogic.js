@@ -423,12 +423,13 @@ function switchKeypadButtons(){
         enableButton(langButton) // visible on all PC URL
     else 
         enableButton(moreButton) // visible on all Mobile URL
-
-    if(getDevice() === 'PC'){
         if (getLanguage() === 'ES' & getSite() === 'Home'){
             disableButton(lauglitchButton)
             disableButton(spanishButton)
+            disableButton(spanishButtonMobile)
     
+            enableButton(englishButtonMobile)
+            enableButton(contactButtonMobile)
             enableButton(englishButton)
             enableButton(contactButton)
             englishBFunc = redirectToHomeEN;
@@ -436,7 +437,10 @@ function switchKeypadButtons(){
         } else if (getLanguage() === 'EN' & getSite() === 'Home'){
             disableButton(lauglitchButton)
             disableButton(englishButton)
+            disableButton(englishButtonMobile)
     
+            enableButton(spanishButtonMobile)
+            enableButton(contactButtonMobile)
             enableButton(spanishButton)
             enableButton(contactButton)
             spanishBFunc = redirectToHomeES;
@@ -444,7 +448,11 @@ function switchKeypadButtons(){
         } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
             disableButton(spanishButton)
             disableButton(contactButton)
+            disableButton(spanishButtonMobile)
+            disableButton(contactButtonMobile)
     
+            enableButton(lauglitchButton)
+            enableButton(englishButtonMobile)
             enableButton(lauglitchButton)
             enableButton(englishButton)
             lauglitchBFunc = redirectToHomeES;
@@ -452,7 +460,11 @@ function switchKeypadButtons(){
         } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
             disableButton(englishButton)
             disableButton(contactButton)
+            disableButton(englishButtonMobile)
+            disableButton(contactButtonMobile)
     
+            enableButton(lauglitchButton)
+            enableButton(spanishButtonMobile)
             enableButton(lauglitchButton)
             enableButton(spanishButton)
             lauglitchBFunc = redirectToHomeEN;
@@ -468,42 +480,6 @@ function switchKeypadButtons(){
                 button.style.opacity = 0.5;
             }
         });
-    } else if (getDevice() === 'Mobile'){
-        if (getLanguage() === 'ES' & getSite() === 'Home'){
-            disableButton(lauglitchButton)
-            disableButton(spanishButtonMobile)
-    
-            enableButton(englishButtonMobile)
-            enableButton(contactButtonMobile)
-            englishBFunc = redirectToHomeEN;
-            contactBFunc = redirectToContactES;
-        } else if (getLanguage() === 'EN' & getSite() === 'Home'){
-            disableButton(lauglitchButton)
-            disableButton(englishButtonMobile)
-    
-            enableButton(spanishButtonMobile)
-            enableButton(contactButtonMobile)
-            spanishBFunc = redirectToHomeES;
-            contactBFunc = redirectToContactEN;
-        } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
-            disableButton(spanishButtonMobile)
-            disableButton(contactButtonMobile)
-    
-            enableButton(lauglitchButton)
-            enableButton(englishButtonMobile)
-            lauglitchBFunc = redirectToHomeES;
-            englishBFunc = redirectToContactEN;
-        } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
-            disableButton(englishButtonMobile)
-            disableButton(contactButtonMobile)
-    
-            enableButton(lauglitchButton)
-            enableButton(spanishButtonMobile)
-            lauglitchBFunc = redirectToHomeEN;
-            spanishBFunc = redirectToContactES;
-        } else {
-            console.log('Variables de localización no identificadas en Mobile.')
-        }
 
         // Darken the current language to report the user not to click again on it 
         const dropdownButtons = document.querySelectorAll('#langDropdownMobile .dropdown-item-mobile');
@@ -512,9 +488,6 @@ function switchKeypadButtons(){
                 button.style.opacity = 0.5;
             }
         });
-    } else {
-        console.log("Dispositivo no reconocido.")
-    }  
 }
 
 ///////////// 5 - DEVICE CONTROL (PC and Mobile)
