@@ -212,9 +212,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Formularios
     var spanishSubmitButton = document.querySelector('#spanish-submit-btn');
     spanishSubmitButton.value = 'Enviar';
-    var englishSubmitButton = document.querySelector('#english-submit-btn');
-    englishSubmitButton.value = 'Send';
-});
+    var englishsubmitButton = document.querySelector('#english-submit-btn');
+    if (englishsubmitButton !== null) {
+      englishsubmitButton.value = 'Send';
+    } else {
+      console.log('El botón no se encontró en el documento.');
+    }
+    });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
         langDropdownMobile.style.display = 'none';
