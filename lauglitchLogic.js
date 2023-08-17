@@ -305,7 +305,7 @@ function redirectTo(url) {
     content.style.transform = "translateY(20px)";
     setTimeout(() => {
         window.location.href = url;
-    }, 500); 
+    }, 250); 
 }
 // Evento al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
