@@ -210,9 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
     });
     // Formularios
-    var spanishSubmitButton = document.getElementById('spanish-submit-btn');
+    var spanishSubmitButton = document.querySelector('#spanish-submit-btn');
     spanishSubmitButton.value = 'Enviar';
-    var englishSubmitButton = document.getElementById('english-submit-btn');
+    var englishSubmitButton = document.querySelector('#english-submit-btn');
     englishSubmitButton.value = 'Send';
 });
 $('#moreButton').on('click', function() {
