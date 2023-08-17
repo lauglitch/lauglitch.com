@@ -482,8 +482,8 @@ function switchKeypadButtons(){
         });
 
         // Darken the current language to report the user not to click again on it 
-        const dropdownButtons = document.querySelectorAll('#langDropdownMobile .dropdown-item-mobile');
-        dropdownButtons.forEach(button => {
+        const dropdownButtonsMobile = document.querySelectorAll('#langDropdownMobile .dropdown-item-mobile');
+        dropdownButtonsMobile.forEach(button => {
             if (button.disabled) {
                 button.style.opacity = 0.5;
             }
