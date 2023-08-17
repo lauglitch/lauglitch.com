@@ -210,16 +210,11 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
     });
     // Formularios
-    var spanishSubmitButton = document.querySelector('#spanish-submit-btn');
-    if (spanishSubmitButton !== null) {
-      spanishSubmitButton.value = 'Enviar';
-    } else {
-      console.log('spanishSubmitButton no se encontró en el documento.');
-    }
-    });
-    var englishsubmitButton = document.querySelector('#english-submit-btn');
-    if (englishsubmitButton !== null) {
-      englishsubmitButton.value = 'Send';
+    var submitButton = document.querySelector('#ContactForm1_contact-form-submit');
+    if (getLang() === 'ES) {
+      submitButton.value = 'Enviar';
+    } else if (getLang() === 'EN' {
+      submitButton.value = 'Send';
     } else {
       console.log('englishsubmitButton no se encontró en el documento.');
     }
