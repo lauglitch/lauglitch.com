@@ -211,9 +211,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Formularios
     var submitButton = document.querySelector('#ContactForm1_contact-form-submit');
-    if (getLang() === 'ES') {
+    if (getLanguage() === 'ES') {
       submitButton.value = 'Enviar';
-    } else if (getLang() === 'EN') {
+    } else if (getLanguage() === 'EN') {
       submitButton.value = 'Send';
     } else {
       console.log('englishsubmitButton no se encontró en el documento.');
