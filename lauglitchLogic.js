@@ -210,11 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
     });
     // Formularios
-    var submitButton = document.querySelector('#ContactForm1_contact-form-submit');
-    if (getLanguage() === 'ES') {
-      submitButton.value = 'Enviar';
-    } else if (getLanguage() === 'EN') {
-      submitButton.value = 'Send';
+    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
+    if (englishSubmitButton !== null) {
+      englishSubmitButton.value = 'Send';
     } else {
       console.log('englishsubmitButton no se encontró en el documento.');
     }
