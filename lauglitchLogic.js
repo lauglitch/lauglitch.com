@@ -211,12 +211,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     // Formularios
     var spanishSubmitButton = document.querySelector('#spanish-submit-btn');
-    spanishSubmitButton.value = 'Enviar';
+    if (spanishSubmitButton !== null) {
+      spanishSubmitButton.value = 'Enviar';
+    } else {
+      console.log('spanishSubmitButton no se encontró en el documento.');
+    }
+    });
     var englishsubmitButton = document.querySelector('#english-submit-btn');
     if (englishsubmitButton !== null) {
       englishsubmitButton.value = 'Send';
     } else {
-      console.log('El botón no se encontró en el documento.');
+      console.log('englishsubmitButton no se encontró en el documento.');
     }
     });
 $('#moreButton').on('click', function() {
