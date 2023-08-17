@@ -116,11 +116,6 @@ const webElements = [
     { htmlElem: englishButtonMobile,    lang: 'ALL', site: 'ALL', device: 'Mobile' },
     { htmlElem: contactButtonMobile,    lang: 'ALL', site: 'ALL', device: 'Mobile' },
 ]
-// 05.5 Formularios
-var spanishSubmitButton = document.querySelector('spanish-submit-btn');
-spanishSubmitButton.value = 'Enviar';
-var englishSubmitButton = document.querySelector('english-submit-btn');
-englishSubmitButton.value = 'Send';
 
 // 0.5 - Videojuegos (Imagenes y Links)
 var vgImages = [
@@ -214,6 +209,11 @@ document.addEventListener("DOMContentLoaded", function () {
     langDropdownMobile.addEventListener("click", function (event) {
       event.stopPropagation();
     });
+    // Formularios
+    var spanishSubmitButton = document.querySelector('spanish-submit-btn');
+    spanishSubmitButton.value = 'Enviar';
+    var englishSubmitButton = document.querySelector('english-submit-btn');
+    englishSubmitButton.value = 'Send';
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
