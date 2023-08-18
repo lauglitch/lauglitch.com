@@ -271,7 +271,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.21");                          // Debug version
+console.log("V1.22");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -671,8 +671,6 @@ function enableButton(button) {
     }
 }
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
 // Configura la conexión con Firebase usando tu propia configuración
 const firebaseConfig = {
     apiKey: "AIzaSyC0lzLboQBVszPlr5msPjIDhrnOKnO1bSE",
