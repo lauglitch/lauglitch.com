@@ -267,7 +267,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.15");                          // Debug version
+console.log("V1.14");                          // Debug version
 showEnglishFormMessage(true)
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -621,12 +621,12 @@ function readjustContent() {
 function showEnglishFormMessage(){
     console.log("showEnglishFormMessage()");
 
-    if(document.getElementById(ContactForm2_contact-form-error-message) !== null && document.getElementById(ContactForm2_contact-form-error-message) != null){
-        if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
+    if(document.getElementById("#ContactForm2_contact-form-error-message") !== null && document.getElementById("#ContactForm2_contact-form-error-message") != null){
+        if (document.getElementById("#ContactForm2_contact-form-error-message").classList.contains("contact-form-error-message-with-border")){
             englishSuccessMessage = ""
             englishErrorMessage = "An error ocured while sending message"
             console.log("ERROR")
-        } else if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
+        } else if (document.getElementById("#ContactForm2_contact-form-error-message").classList.contains("contact-form-error-message-with-border")){
             englishErrorMessage=""
             englishSuccessMessage = "Message has been sent succesfully" 
             console.log("SUCCESFUL")
