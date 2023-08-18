@@ -271,7 +271,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.20");                          // Debug version
+console.log("V1.21");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -670,4 +670,46 @@ function enableButton(button) {
         button.disabled = false;
     }
 }
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-analytics.js";
+// Configura la conexión con Firebase usando tu propia configuración
+const firebaseConfig = {
+    apiKey: "AIzaSyC0lzLboQBVszPlr5msPjIDhrnOKnO1bSE",
+    authDomain: "lauglitchforms.firebaseapp.com",
+    projectId: "lauglitchforms",
+    storageBucket: "lauglitchforms.appspot.com",
+    messagingSenderId: "80257562725",
+    appId: "1:80257562725:web:1611cd6481a45defc22e8c",
+    measurementId: "G-CBHY3RVTPV"
+  };
+
+firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
+  
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+document.addEventListener('DOMContentLoaded', function() {
+    var enviarBtn = document.getElementById('enviar');
+    var formulario = document.getElementById('miFormulario');
+
+    enviarBtn.addEventListener('click', function() {
+        var nombre = document.getElementById('nombre').value;
+        var correo = document.getElementById('correo').value;
+        var mensaje = document.getElementById('mensaje').value;
+
+        var nuevoRegistro = database.ref('formularios').push();
+        nuevoRegistro.set({
+            nombre: nombre,
+            correo: correo,
+            mensaje: mensaje
+        });
+
+        alert('¡Formulario enviado y datos guardados en Firebase!');
+        formulario.reset();
+    });
+});
 ///////////// END /////////////
