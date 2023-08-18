@@ -1,624 +1,339 @@
-// @charset "UTF-8";
-// @ts-ignore
-// @ts-nocheck
-// @mime-type text/javascript
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang='es' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+      <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+      </b:if>
+      <b:if cond='data:blog.pageType == &quot;index&quot;'>
+        <title>
+          <data:blog.pageTitle/>
+        </title>
+        <b:else/>
+        <title>
+          <data:blog.pageName/>
+        </title>
+      </b:if>
+      <b:include data='blog' name='all-head-content'/>
 
-///////////// 0.0 - VARIABLES
-// 0.1 - Location Variables
-let language = "ES";    // ES || EN
-let site = "Home";      // Home || ContactdropdownButtonsMobile
-let device = 'PC';  // PC || Mobile 
-const content = document.body;
-const loaderContainer = document.querySelector(".loader-container");
-let isRedirecting = false;
+      <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'/>
 
-// 0.1 - DIVS. Used to show or hide web elements and to interact with the web
-// (DIVS) CONTAINERS
-var BodyHome = document.getElementById('BodyHome');         // Home-ES & Home-EN
-var BodyContact = document.getElementById('BodyContact');   // Contact-ES & Contact-EN
+      <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'/>
+      <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'/>
+      
+      <link href='https://fonts.googleapis.com' rel='preconnect'/>
+      <link crossorigin='anonymous;' href='https://fonts.gstatic.com' rel='preconnect'/>
+      <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP&amp;display=swap' rel='stylesheet'/>
+      <link href='https://lauglitch.github.io/lauglitch.com/lauglitchStyle.css' rel='stylesheet' type='text/css'/>
 
-var DivLogo = document.getElementById('DivLogo');          
-var DivKeypad = document.getElementById('DivKeypad');     
-var DivMore = document.getElementById('DivMore');         
-var DivBio = document.getElementById('DivBio');           
-var DivImages = document.getElementById('DivImages');      
-
-var DivContactLeft = document.getElementById('DivContactLeft');    
-var DivContactRight = document.getElementById('DivContactRight');  
-var DivContactForm = document.getElementById('DivContactForm');    
-var DivFindMe = document.getElementById('DivFindMe');               
-
-// (DIVS) INNER ELEMENTS
-var spanishBio = document.getElementById('spanishBio');    
-var englishBio = document.getElementById('englishBio'); 
-
-var spanishContactText = document.getElementById('spanishContactText');  
-var englishContactText = document.getElementById('englishContactText');   
-var spanishForm = document.getElementById('spanishForm');              
-var englishForm = document.getElementById('englishForm');                  
-var spanishFindOnText = document.getElementById('spanishFindOnText');     
-var englishFindOnText = document.getElementById('englishFindOnText');      
-var contactLinks = document.getElementById('contactLinks');
-
-// 0.2 - NAVBAR BUTTONS
-var lauglitchButton = document.getElementById('lauglitchButton');   // PC & Mobile
-var contactButton = document.getElementById('contactButton');       // PC
-
-let lauglitchBFunc = function() {}; // #lauglitchButton
-let spanishBFunc = function() {};   // #spanishButton and #spanishButtonMobile
-let englishBFunc = function() {};   // #englishButton and #englishButtonMobile
-let contactBFunc = function() {};   // #contactButton and #contactButtonMobile
-
-// 0.3 - NAVBAR DROPDOWNs
-    /* Language Dropdwon ())PC) */
-var langButton = document.getElementById('langButton');    
-var langDropdown = document.getElementById('langDropdown');
-var langDropdownVisible = false;
-
-var spanishButton = document.getElementById('spanishButton');    
-var englishButton = document.getElementById('englishButton');  
-    /* */
-    /* Mobile Dropdowns */
-var moreButton = document.getElementById('moreButton');   
-var moreDropdown = document.getElementById('moreDropdown'); 
-var moreDropdownVisible = false; 
-
-var langButtonMobile = document.getElementById('langButtonMobile');  
-var langDropdownMobile = document.getElementById('langDropdownMobile');  
-var langDropdownMobileVisible = false;  
-
-var spanishButtonMobile = document.getElementById('spanishButtonMobile');  
-var englishButtonMobile = document.getElementById('englishButtonMobile');  
-var contactButtonMobile = document.getElementById('contactButtonMobile');             
-    /* */
-
-// 0.4 - Web Elements Array (contains all variables above in order to Location Variables)
-const webElements = [
-    // DIVS
-    { htmlElem: BodyHome,       lang: 'ALL', site: 'Home', device: 'ALL'},
-    { htmlElem: BodyContact,    lang: 'ALL', site: 'Contact', device: 'ALL' },
-
-    { htmlElem: DivLogo,        lang: 'ALL', site: 'ALL', device: 'ALL' },
-    { htmlElem: DivKeypad,      lang: 'ALL', site: 'ALL', device: 'PC' },
-    { htmlElem: DivMore,        lang: 'ALL', site: 'ALL', device: 'Mobile' },
-
-    //{ htmlElem: DivBio,         lang: 'ALL', site: 'Home', device: 'ALL' },
-    { htmlElem: spanishBio,     lang: 'ES', site: 'Home', device: 'ALL' },
-    { htmlElem: englishBio,     lang: 'EN', site: 'Home', device: 'ALL' },
-    { htmlElem: DivImages,      lang: 'ALL', site: 'Home', device: 'ALL' },
-
-    { htmlElem: DivContactLeft,     lang: 'ALL', site: 'Contact', device: 'ALL' },
-    { htmlElem: DivContactRight,    lang: 'ALL', site: 'Contact', device: 'ALL' },
-    //{ htmlElem: DivContactForm,     lang: 'ALL', site: 'Contact', device: 'ALL' },
-    { htmlElem: spanishContactText, lang: 'ES', site: 'Contact', device: 'ALL' },
-    { htmlElem: englishContactText, lang: 'EN', site: 'Contact', device: 'ALL' },
-    { htmlElem: spanishForm,        lang: 'ES', site: 'Contact', device: 'ALL' },
-    { htmlElem: englishForm,        lang: 'EN', site: 'Contact', device: 'ALL' },
-    //{ htmlElem: DivFindMe,          lang: 'ALL', site: 'Contact', device: 'ALL' },
-    { htmlElem: spanishFindOnText,  lang: 'ES', site: 'Contact', device: 'ALL' },
-    { htmlElem: englishFindOnText,  lang: 'EN', site: 'Contact', device: 'ALL' },
-
-    // BUTTONS (Info: Some buttons are deactivated on some languages or sites but they are still shown, that's why 'ALL')
-    { htmlElem: lauglitchButton,    lang: 'ALL', site: 'ALL', device: 'ALL' },
-    { htmlElem: contactButton,      lang: 'ALL', site: 'ALL', device: 'PC' },
-
-    // DROPDOWNs
-    { htmlElem: langButton,     lang: 'ALL', site: 'ALL', device: 'PC' },
-    { htmlElem: langDropdown,   lang: 'ALL', site: 'ALL', device: 'PC' },
-    { htmlElem: spanishButton,  lang: 'ALL', site: 'ALL', device: 'PC' },
-    { htmlElem: englishButton,  lang: 'ALL', site: 'ALL', device: 'PC' },
-
-    { htmlElem: moreButton,             lang: 'ALL', site: 'ALL', device: 'Mobile' },
-    { htmlElem: moreDropdown,           lang: 'ALL', site: 'ALL', device: 'Mobile' },
-    { htmlElem: langButtonMobile,       lang: 'ALL', site: 'ALL', device: 'Mobile' },
-    { htmlElem: langDropdownMobile,     lang: 'ALL', site: 'ALL', device: 'Mobile' },
-    { htmlElem: spanishButtonMobile,    lang: 'ALL', site: 'ALL', device: 'Mobile' },
-    { htmlElem: englishButtonMobile,    lang: 'ALL', site: 'ALL', device: 'Mobile' },
-    { htmlElem: contactButtonMobile,    lang: 'ALL', site: 'ALL', device: 'Mobile' },
-]
-
-// 0.5 - Videojuegos (Imagenes y Links)
-var vgImages = [
-    { 
-        src: 'https://imgur.com/cCrx5qm.png', alt: 'InsTracker', link: 'https://lauglitch.itch.io/instracker' 
-    },
-    { 
-        src: 'https://imgur.com/zPOmBx0.png', alt: 'TwiTracker', link: 'https://lauglitch.itch.io/twitracker' 
-    },
-    { 
-        src: 'https://imgur.com/dYV13M3.png', alt: 'If I', link: 'https://iviuriel.itch.io/if-i' 
-    },
-    { 
-        src: 'https://imgur.com/9AFJqM6.png', alt: 'Desktop Tower Chess', link: 'https://rodillos-gaming.itch.io/desktop-tower-chess' 
-    },
-    { 
-        src: 'https://imgur.com/sGqxp4O.png', alt: 'Triskel', link: 'https://rodillos-gaming.itch.io/triskel' 
-    },
-    { 
-        src: 'https://imgur.com/lCPmpak.png', alt: 'Wanted: Point And Shot', link: 'https://diegodiaz.itch.io/wanted-point-and-shot' 
-    },
-    { 
-        src: 'https://imgur.com/peFNJO8.png', alt: 'Knights And Castles', link: 'https://castlesgames.github.io/' 
-    },
-];
-function reloadImages() {
-var divImages = document.getElementById('DivImages');
-var template = document.getElementById('image-template');
-
-vgImages.forEach(function(imageData) {
-    var clone = template.content.cloneNode(true);
-    clone.querySelector('img').src = imageData.src;
-    clone.querySelector('img').alt = imageData.alt;
-    clone.querySelector('a').textContent = imageData.alt;
-    clone.querySelector('a').href = imageData.link;
-    divImages.appendChild(clone);
-});
-}
-document.addEventListener('DOMContentLoaded', reloadImages);
-  
-// 0.6 - BUTTON EVENTS
-// When user click on #lauglitchButton
-lauglitchButton.addEventListener("click", function () {
-    lauglitchBFunc();
-    setGlobalVariables();
-});
-// When user click on #contactButton
-contactButton.addEventListener("click", function () {
-    contactBFunc();
-    setGlobalVariables();
-});
-// When user click on #spanishButton
-spanishButton.addEventListener("click", function () {
-    spanishBFunc();
-    setGlobalVariables();
-});
-// When user click on #englishButton
-englishButton.addEventListener("click", function () {
-    englishBFunc();
-    setGlobalVariables();
-});
-// When user click on #spanishButtonMobile
-spanishButtonMobile.addEventListener("click", function () {
-    spanishBFunc();
-    setGlobalVariables();
-});
-// When user click on #englishButtonMobile
-englishButtonMobile.addEventListener("click", function () {
-    englishBFunc();
-    setGlobalVariables();
-});
-// When user click on #contactButtonMobile
-contactButtonMobile.addEventListener("click", function () {
-    contactBFunc();
-    setGlobalVariables();
-});
-// Show or hide dropdown when langButton is pressed
-document.addEventListener("DOMContentLoaded", function () { 
-    // Close all dropdowns if user clicks outside
-    document.addEventListener("click", function () {
-      moreDropdown.style.display = "none";
-      moreDropdown.classList.remove('show')
-      langDropdownMobile.style.display = "none";
-      langDropdownMobile.classList.remove('show')
-    });
-  
-    // Avoid that clicking on dropdowns close them
-    moreDropdown.addEventListener("click", function (event) {
-      event.stopPropagation();
-    });
-    langDropdownMobile.addEventListener("click", function (event) {
-      event.stopPropagation();
-    });
-    // English Form
-    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
-    if (englishSubmitButton !== null) {
-      englishSubmitButton.value = 'Send';
-    } 
-    var englishSuccessMessage = document.querySelector('#ContactForm2_contact-form-success-message');
-    if (englishSuccessMessage !== null) {
-        englishSuccessMessage.value = 'Your message has been sent successfully';
-    } 
-    var englishErrorMessage = document.querySelector('#ContactForm2_contact-form-error-message');
-    if (englishErrorMessage !== null) {
-        englishErrorMessage.value = 'Error sending the message';
-    } 
-});
-$('#moreButton').on('click', function() {
-    if (langDropdownMobile.style.display === "block"){
-        langDropdownMobile.style.display = 'none';
-        langDropdownMobile.classList.remove('show')
-    } 
-    // Cierra langDropdownMobile si está desplegado
-    if (moreDropdown.style.display === 'block'){
-        moreDropdown.style.display = 'none';
-        moreDropdown.style.opacity = 0;
-        moreDropdown.classList.remove('show')
-    } else {
-        moreDropdown.style.display = 'block';
-        moreDropdown.style.opacity = 1;
-        moreDropdown.classList.add('show')
+      <b:skin><![CDATA[     
+      /*
+      -----------------------------------------------
+      Lauglitch Theme's XML Template
+      -----------------------------------------------
+      Name           : lauglitchTheme
+      Version        : 1.1
+      Author         : Laura Rodríguez Corpas
+      Author  URL    : http://www.lauglitch.com/
+      Date           : August, 2023
+      -----------------------------------------------
+      License:
+      http://creativecommons.org/licenses/by/3.0/
+      ----------------------------------------------- */
+      }
     }
-});
-$('#langButtonMobile').on('click', function() {
-    if (langDropdownMobile.style.display === "block"){
-        langDropdownMobile.style.display = 'none';
-    } else {
-        langDropdownMobile.style.display = 'block';
     }
-});
-  
-///////////// 1 - GETTERS AND SETTERS
-function setLanguage(lang) {
-    language = lang;
-}
-function getLanguage() {
-    return language;
-}
-function setSite(sit) {
-    site = sit;
-}
-function getSite() {
-    return site;
-}
-function setDevice(dev) {
-    device = dev;
-}
-function getDevice() {
-    return device;
-}
-function getDomain(url) {
-    var a = document.createElement('a');
-    a.href = url;
-    return a.hostname;
-}
+    ]]></b:skin>
+  </head>
 
-///////////// 2 - INSTRUCTIONS
-console.log("V1.1");                          // Debug version
-
-// 2.1. Graphics
-setGlobalVariables();                      // Called on first page load
-
-// 2.2. Device Control
-window.addEventListener("load", readjustContent);
-window.addEventListener("resize", readjustContent);
-
-// 2.3. Load Web
-document.addEventListener("DOMContentLoaded", function () {
-    const loaderContainer = document.querySelector(".loader-container");
-
-    // Mostrar el contenido después de cargar
-    loaderContainer.style.opacity = 0;
-    setTimeout(() => {
-        loaderContainer.style.display = "none";
-        content.style.opacity = 1;
-    }, 1000); // Tiempo de espera para el desvanecimiento  
-});
-///////////// 3 - NAVIGATION
-// Función para aplicar la transición de página
-// Función para aplicar la transición de página
-function applyPageTransition(url) {
-    if (!isRedirecting) {
-        isRedirecting = true;
-        loaderContainer.style.opacity = 1;
-        setTimeout(() => {
-            redirectTo(url);
-        }, 1000); // Tiempo de espera para el desvanecimiento
-    }
-}
-// Función de redirección con transición
-function redirectTo(url) {
-    content.style.opacity = 0;
-    content.style.transform = "translateY(20px)";
-    setTimeout(() => {
-        window.location.href = url;
-    }, 250); 
-}
-// Evento al cargar la página
-document.addEventListener("DOMContentLoaded", function () {
-    // Aplicar la transición de entrada al cargar la página
-    content.style.opacity = 1;
-    loaderContainer.style.opacity = 0;
-});
-// Funciones de redirección
-function redirectToHomeES() {
-    applyPageTransition("https://www.lauglitch.com/");
-}
-function redirectToHomeEN() {
-    applyPageTransition("https://www.lauglitch.com/p/home.html");
-}
-function redirectToContactES() {
-    applyPageTransition("https://www.lauglitch.com/p/contacto.html");
-}
-function redirectToContactEN() {
-    applyPageTransition("https://www.lauglitch.com/p/contact.html");
-}
-
-///////////// 4 - GRAPHICS
-// Set Global Variables based on URL
-function setGlobalVariables() {        
-    var currentURL = window.location.href;
-    //console.log("Current URL: " + currentURL);
-
-    if (currentURL === 'https://www.lauglitch.com/') { 
-        setLanguage('ES');
-        setSite('Home');
-        setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitch.com/p/home.html') {
-        setLanguage('EN');
-        setSite('Home');
-        setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html') {
-        setLanguage('ES');
-        setSite('Contact');
-        setDevice('PC');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html') {
-        setLanguage('EN');
-        setSite('Contact');
-        setDevice('PC');
-    } 
-   // MOBILE VERSION
-    else if (currentURL === 'https://www.lauglitch.com/?m=1') {
-        setLanguage('ES');
-        setSite('Home');
-        setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitch.com/p/home.html?m=1') {
-        setLanguage('EN');
-        setSite('Home');
-        setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contacto.html?m=1') {
-        setLanguage('ES');
-        setSite('Contact');
-        setDevice('Mobile');
-    } else if (currentURL === 'https://www.lauglitch.com/p/contact.html?m=1') {
-        setLanguage('EN');
-        setSite('Contact');
-        setDevice('Mobile');
-    } else {
-        console.log("No existe esta página.");
-    }
-
-    setDisplay()
-    switchKeypadButtons();
-}
-// Show HTML elements based on current Language, Site and Device
-function setDisplay(){
-    const toShow = [];
-    const toHide = [];
-    let lang = getLanguage();       // TODO: Intentar borrar estos 3 y usar los getters
-    let site = getSite();
-    let device = getDevice();
-
-    //console.log("Language: " + getLanguage() + " / Site: " + getSite() + " / Device: " + getDevice())
-    webElements.forEach((elem) => {
-
-        // #BodyHome & #BodyContact
-        if (elem.lang === 'ALL' && elem.site === site && elem.device === 'ALL') {
-            toShow.push(elem.htmlElem);
-        } 
-        // #spanishBio & #englishBio
-        else if (elem.lang === getLanguage() && elem.site === site && elem.device === 'ALL') {
-            toShow.push(elem.htmlElem);
-        }
-        else if (elem.lang === 'ALL' && elem.site === 'ALL' && elem.device === 'ALL') {
-            toShow.push(elem.htmlElem);
-        } 
-        else if (elem.lang === 'ALL' && elem.site === 'ALL' && elem.device === getDevice()) {
-            //(elem)
-            toShow.push(elem.htmlElem);
-        }
-        else {
-            toHide.push(elem.htmlElem);
-        }
-    });
-
-    toShow.forEach((elem) => {
-        //console.log("Yes " + elem.id)
-
-        // Hide Dropdowns and show the rest of HTML Elements
-        if(!(elem === langDropdown || elem === moreDropdown || elem === langDropdownMobile))
-            elem.style.display = 'block';
-    });
-    toHide.forEach((elem) => {
-        //console.log("No " + elem.id)
-        elem.style.display = 'none';
-    });
-}
-// Change Navbar buttons based on URL
-function switchKeypadButtons(){
-    if (getDevice()==='PC')
-        enableButton(langButton) // visible on all PC URL
-    else 
-        enableButton(moreButton) // visible on all Mobile URL
-        if (getLanguage() === 'ES' & getSite() === 'Home'){
-            disableButton(lauglitchButton)
-            disableButton(spanishButton)
-            disableButton(spanishButtonMobile)
+<!-- BODY -->
+  <body>
+    <div class='loader-container'>
+        <div class='loader'/>
+    </div>
     
-            enableButton(englishButtonMobile)
-            enableButton(contactButtonMobile)
-            enableButton(englishButton)
-            enableButton(contactButton)
-            englishBFunc = redirectToHomeEN;
-            contactBFunc = redirectToContactES;
-        } else if (getLanguage() === 'EN' & getSite() === 'Home'){
-            disableButton(lauglitchButton)
-            disableButton(englishButton)
-            disableButton(englishButtonMobile)
-    
-            enableButton(spanishButtonMobile)
-            enableButton(contactButtonMobile)
-            enableButton(spanishButton)
-            enableButton(contactButton)
-            spanishBFunc = redirectToHomeES;
-            contactBFunc = redirectToContactEN;
-        } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
-            disableButton(spanishButton)
-            disableButton(contactButton)
-            disableButton(spanishButtonMobile)
-            disableButton(contactButtonMobile)
-    
-            enableButton(lauglitchButton)
-            enableButton(englishButtonMobile)
-            enableButton(lauglitchButton)
-            enableButton(englishButton)
-            lauglitchBFunc = redirectToHomeES;
-            englishBFunc = redirectToContactEN;
-        } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
-            disableButton(englishButton)
-            disableButton(contactButton)
-            disableButton(englishButtonMobile)
-            disableButton(contactButtonMobile)
-    
-            enableButton(lauglitchButton)
-            enableButton(spanishButtonMobile)
-            enableButton(lauglitchButton)
-            enableButton(spanishButton)
-            lauglitchBFunc = redirectToHomeEN;
-            spanishBFunc = redirectToContactES;
-        } else {
-            console.log('Variables de localización no identificadas en PC.')
-        }
+    <!-- NAVBAR -->
+    <nav class='navbar navbar-inverse' style='background-color: #3b5998; animate: true; transition: all 0.15s;'>    
+      <div class='container'> 
 
-         // Darken the current language to report the user not to click again on it 
-        const dropdownButtons = document.querySelectorAll('#langDropdown .dropdown-item');
-        dropdownButtons.forEach(button => {
-            if (button.disabled) {
-                button.style.opacity = 0.5;
-            }
-        });
+        <div class='row'>
+            <!-- Logo Section -->
+            <div class='col-lg-4 col-md-4 col-sm-6 col-12' id='DivLogo'>
+                <button class='botonLogo transparent-button' id='lauglitchButton'>
+                    <img src='https://imgur.com/uuOdmOV.png'/>
+                </button>
+            </div>
+        </div>
 
-        // Darken the current language to report the user not to click again on it 
-        const dropdownButtonsMobile = document.querySelectorAll('#langDropdownMobile .dropdown-item-mobile');
-        dropdownButtonsMobile.forEach(button => {
-            if (button.disabled) {
-                button.style.opacity = 0.5;
-            }
-        });
-}
+        <div class='largeNavbar row' id='DivKeypad'>
+          <!-- Language Selection Dropdown -->
+          <div class='largeNavbar dropdown col-lg-4 col-md-4 col-sm-6 col-12' style='margin-top: 5%; margin-right: 15%;'>
 
-///////////// 5 - DEVICE CONTROL (PC and Mobile)
-// Returns true/false if is navigating on Mobile 
-function navigatingOnMobile() {
-    return /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-// Show or hide different content if navigating on PC or Mobile and if width<768px
-function changeNavbarAccordingToDevice() {
-    const largeNavbar = document.querySelectorAll('.largeNavbar');
-    const smallNavbar = document.querySelectorAll('.smallNavbar');
+            <button aria-expanded='false' aria-haspopup='true' class='largeNavbar boton transparent-button dropdown-toggle' data-toggle='dropdown' id='langButton' type='button'>
+                <img height='50%' src='https://imgur.com/FZpaV40.png' width='50%'/>
+            </button>
+            
+            <div aria-labelledby='langButton' class='dropdown-menu dropdown-large-margin align-center' id='langDropdown'>
+                <button class='largeNavbar botonDrop transparent-button dropdown-item' id='spanishButton' type='button'>
+                    <img src='https://imgur.com/iU8KDiy.png'/>
+                </button>
+                <button class='largeNavbar botonDrop transparent-button dropdown-item' id='englishButton' type='button'>
+                    <img src='https://imgur.com/Wmd2JSQ.png'/>
+                </button>
+            </div>
+         
+          </div>
 
-    $('.dropdown-toggle').dropdown();   // Restart all dropdowns to make sure they work
+          <!-- Contact Button (On Mobile, each button occupies full width) -->
+          <div class='col-lg-4 col-md-4 col-sm-12 col-12' style='margin-top: 5%;'>
+              <div class='largeNavbar'>
+                  <button class='largeNavbar boton transparent-button' id='contactButton'>
+                      <img height='100%' src='https://imgur.com/WyqsCu9.png' width='100%'/>
+                  </button> 
+              </div> 
+          </div> 
 
-    if (navigatingOnMobile() || window.innerWidth<768) {
-        DivKeypad.classList.remove('row');         // Remove row class from DivKeypad
+        </div>
+
+        <div class='row' id='DivMore'>
+          <!-- "More" Button (For Mobile View, each button occupies full width) -->
+          <div class='dropdown col-lg-4 col-md-4 col-sm-6 col-12' style='margin-top: 5%;'>
+              <button aria-expanded='false' aria-haspopup='true' class='smallNavbar boton transparent-button dropdown-toggle' data-toggle='dropdown' id='moreButton' type='button'>
+                  <img height='50%' src='https://imgur.com/skCGjQf.png' width='50%'/>
+              </button> 
+
+              <div aria-labelledby='moreButton' class='dropdown-menu dropdown-menu-center dropdown-small-margin' id='moreDropdown'>
+                    <button class='smallNavbar botonDrop transparent-button dropdown-item' id='contactButtonMobile' type='button'>
+                        <img src='https://imgur.com/WyqsCu9.png'/>
+                    </button>
+                    
+                    <button aria-expanded='false' aria-haspopup='true' class='smallNavbar transparent-button dropdown-toggle dropdown-item' data-toggle='dropdown' id='langButtonMobile' type='button'>
+                        <img class='langDropdownMobile-margin' height='50%' src='https://imgur.com/FZpaV40.png' width='50%'/>
+                    </button>
+
+                    <div aria-labelledby='langButton' class='smallNavbar dropdown-menu dropdown-menu-center' id='langDropdownMobile'>
+                        <button class='smallNavbar botonDrop transparent-button dropdown-item' id='spanishButtonMobile' type='button'>
+                            <img src='https://imgur.com/yMcZxYg.png'/>
+                        </button>
+                        <button class='smallNavbar smallNavbar botonDrop transparent-button dropdown-item' id='englishButtonMobile' type='button'>
+                            <img src='https://imgur.com/WNRh5O7.png'/>
+                        </button>
+                    </div>
+
+              </div>
+          </div>     
+        </div> 
+
+      </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+    <!-- CONTENT -->
+    <div id='body-templates' style='min-height: 100vh;'>
+
+      <!-- Home Body (ES/EN) -->
+      <div id='BodyHome'>
+        <section id='DivBio'>
+          <div class='DivBio-block'>
+
+            <img height='150' src='https://i.imgur.com/ryP6CTY.png' width='150'/>
+            <h1>
+              @lauglitch
+            </h1>
+
+            <p id='spanishBio' style='font-size:20px !important;'>
+              Diseñadora y Desarrolladora de Videojuegos 🎮 😄
+              <br/>
+              Amante de los gatitos 🐱, la música 🎵 y los viajes 🌍
+              <br/>
+              📍 Madrid (España)
+              <br/>
+            </p>
+
+            <p id='englishBio' style='font-size:20px !important;'>
+              Videogame Designer and Developer 🎮 😄
+              <br/>
+              Kitty 🐱, music 🎵 and travelling 🌍 lover
+              <br/>
+              📍 Madrid (España)
+              <br/>
+            </p>
+          </div>
+        </section>
+
+        <template id='image-template'>
+          <div class='image-container'>
+            <img class='img-fluid'/>
+            <div class='centered-text margenesTitulosJuegos'>
+              <a/>
+            </div>
+          </div>
+        </template>
         
-        smallNavbar.forEach(element => {
-            element.style.display = "block";
-        });
-        largeNavbar.forEach(element => {
-            element.style.display = "none";
-        });
+        <div class='container' id='DivImages' style='margin-top:5%'>
+          
+        </div>
 
-        //Show moreButton
-        DivMore.classList.remove("col-lg-4", "col-md-4", "col-sm-12")
-        DivMore.style.display = 'block'
+      </div>
 
-        // Show small DivLogo
-        DivLogo.classList = [];
-        DivLogo.classList.add('col-lg-4', 'col-md-4', 'col-sm-12');
-
-        // Enable or disable the other possible language button
-        if(getLanguage() === 'ES'){
-            enableButton(englishButtonMobile);
-            disableButton(spanishButtonMobile);
-        } else if (getLanguage() === 'EN'){
-            enableButton(spanishButtonMobile);
-            disableButton(englishButtonMobile);
-        }
-
-        // Hide langDropdownMobile
-        langDropdownMobile.style.display='none';
-    } else {
-        DivKeypad.classList.add('row');  // Add row class to DivKeypad
-
-        largeNavbar.forEach(element => {
-            element.style.display = "block";
-        });
-        smallNavbar.forEach(element => {
-            element.style.display = "none";
-        });
-
-        //Hide moreButton
-        DivMore.classList.add("col-lg-4", "col-md-4", "col-sm-12")
-        DivMore.style.display = 'none'
-
-        // Show large DivLogo
-        DivLogo.classList = [];
-        DivLogo.classList.add('col-lg-4', 'col-md-4', 'col-sm-12', 'col-12');
-
-        // Restore original logoLauglitch and moreButton sizes
-        lauglitchButton.classList.remove('small-screen-style');
-        moreButton.classList.remove('small-screen-style');
+      <!-- Contact Body (ES/EN) -->
+      <div id='BodyContact'>
+        <div class='container'>
   
-        // Enable or disable the other possible language button
-        if(getLanguage() === 'ES'){
-            enableButton(englishButton);
-            disableButton(spanishButton);
-        } else if (getLanguage() === 'EN'){
-            enableButton(spanishButton);
-            disableButton(englishButton);
-        }
-    }
-}
-// Readjust common and existing content if navigating on PC or Mobile and if width<768px
-function readjustContent() {
-    const imageContainers = document.querySelectorAll('.image-container');  // Selección de los contenedores de las imágenes
+          <div class='row divContactRow'>
+              <div class='col-lg-8 col-md-6 col-10' id='DivContactLeft'>
+                <h1 class='hContactTitle' id='spanishContactText'> Contacto </h1>
+                <h1 class='hContactTitle' id='englishContactText'> Contact </h1>
 
-    if (window.innerWidth < 768) {
-        imageContainers.forEach(container => {
-            container.classList.remove('col-lg-4', 'col-md-4', 'text-center');  // Eliminar clases existentes si las hubiera
-            container.classList.add('col-sm-12', 'col-12', 'text-center');  // Agregar nuevas clases para pantallas pequeñas
-        });
+                <div class='col-lg-6 col-md-6 col-sm-6 col-12' style='min-width:100%; margin-bottom:15%'>
+                  <div class='container row'> <!--id='DivContactForm'-->
+             
+                      <div class='contact-form-widget formularios' id='DivContactForm'>
 
-        // Translate both columns 
-        DivContactLeft.style.marginLeft = "10%"
-        DivContactRight.style.marginLeft = "10%"
-        DivContactLeft.style.marginBottom = "-10%"
-    } else {
-        imageContainers.forEach(container => {
-            container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
-            container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Agregar nuevas clases para pantallas grandes
-        });
+                          <!-- Spanish Contact --> 
+                          <b:section id='spanishForm' preferred='yes' style='margin-right:5%'>
+                             <b:widget id='ContactForm1' locked='false' title='spanishForm' type='ContactForm' version='1'>
+                               <b:includable id='main'>
+                                <b:if cond='data:title != &quot;&quot;'>
+                                  <h2 class='title' style='display:none'><data:title/></h2>
+                                </b:if>
+                                <div class='contact-form-widget'>
+                                  <div class='form'>
+                                    <form name='contact-form'>
+                                      <p style='margin-top:5%'>Nombre</p>
+                                      <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
+                                      <p style='margin-top:5%'>email*</p>
+                                      <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
+                                      <p style='margin-top:5%'>Mensaje*</p>
+                                      <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+                                      <p/>
+                                      <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' style='margin-top:2.5%; margin-left:30%' type='button'/>
+                                      <p/>
+                                      <div style='text-align: center; max-width: 222px; width: 100%'>
+                                        <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
+                                        <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <b:include name='quickedit'/>
+                              </b:includable>
+                             </b:widget>
+                           </b:section>
 
-        // Restart both columns 
-        DivContactLeft.style.marginLeft = "0%"
-        DivContactRight.style.marginLeft = "0%"
-    }
+                          <!-- English Contact -->
+                          <b:section id='englishForm' preferred='yes' style='margin-right:5%'>
+                            <b:widget id='ContactForm2' locked='false' title='englishForm' type='ContactForm' version='1'>
+                              <b:includable id='main'>
+                                <b:if cond='data:title != &quot;&quot;'>
+                                  <h2 class='title' style='display:none'><data:title/></h2>
+                                </b:if>
+                                <div class='contact-form-widget'>
+                                  <div class='form'>
+                                    <form name='contact-form'>
+                                      <p style='margin-top:5%'>Name</p>
+                                      <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='30' type='text' value=''/>
+                                      <p style='margin-top:5%'>email*</p>
+                                      <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='30' type='text' value=''/>
+                                      <p style='margin-top:5%'>Message*</p>
+                                      <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
+                                      <p/>
+                                      <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' style='margin-top:2.5%; margin-left:30%' type='button'/>
+                                      <p/>
+                                      <div style='text-align: center; max-width: 222px; width: 100%'>
+                                        <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'>An error occurred while submitting the form.</p>
+                                        <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'>Form submitted successfully.</p>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                                <b:include name='quickedit'/>
+                              </b:includable>
+                            </b:widget>
+                          </b:section>
 
-    changeNavbarAccordingToDevice();
-}
+                      </div>
+                  
+                  </div>
+                </div>
+              </div>
 
-///////////// 6 - BUTTONS
-// Disable button (darken image, remove click and remove hover
-function disableButton(button) {
-    if (button === lauglitchButton){
-        button.classList.remove('hover-active'); 
-        button.disabled = true;
-    } else {
-        button.classList.remove('hover-active'); 
-        button.style.opacity = 0.5;
-        button.disabled = true;
-    }
-}
-// Enable button (active click -and redirect methods- and add hover)
-function enableButton(button) {
-    if (button === lauglitchButton){
-        button.classList.add('hover-active'); 
-        button.disabled = false;
-    } else {
-        button.classList.add('hover-active'); 
-        button.style.opacity = 1;
-        button.disabled = false;
-    }
-}
+              <div class='col-lg-4 col-md-6 col-10' id='DivContactRight'>
+                <h1 id='spanishFindOnText'>Encuéntrame en</h1>
+                <h1 id='englishFindOnText'>Find me on</h1>
 
-///////////// END /////////////
+                <div class='col-lg-6 col-md-6 col-12' style='margin-top:5%; min-width:100%'>           
+                  <div class='container row' id='DivFindMe' style='margin-top:-5%;'>
+                    <div class='' id='contactLinks'>
+
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://i.imgur.com/5Nm0KK7.png' width='30'/>
+                          <a href='https://www.linkedin.com/in/laurarodriguezcorpas/' style='font-size:20px !important;' target='_blank'>LinkedIn</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://i.imgur.com/NzPu5gC.png' width='30'/>
+                          <a href='https://lauglitch.itch.io/' style='font-size:20px !important;' target='_blank'>itch.io</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://i.imgur.com/avPePyZ.png' width='30'/>
+                          <a href='https://github.com/lauglitch' style='font-size:20px !important;' target='_blank'>Github</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://i.imgur.com/ASYtMct.png' width='30'/>
+                          <a href='https://twitter.com/lauglitch' style='font-size:20px !important;' target='_blank'>Twitter</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://i.imgur.com/V76aIMg.png' width='30'/>
+                          <a href='https://www.instagram.com/lauglitch/' style='font-size:20px !important;' target='_blank'>Instagram</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://imgur.com/6wBNFrp.png' width='30'/>
+                          <a href='https://www.twitch.tv/lauglitch/' style='font-size:20px !important;' target='_blank'>Twitch</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://imgur.com/6kh73ZU.png' width='30'/>
+                          <a href='https://www.youtube.com/channel/UCWAWDAv_8jiMMDcurpnYEMg' style='font-size:20px !important;' target='_blank'>YouTube</a>
+                      </div>
+                      <div class='contact-links-container'>
+                          <img height='30' src='https://imgur.com/TR4A0fq.png' style='' width='30'/>
+                          <a href='https://www.tiktok.com/@lauglitch' style='font-size:20px !important;' target='_blank'>TikTok</a>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div> 
+              </div>
+          </div>
+
+        </div>
+      <!-- END Content -->
+      </div>
+
+    </div>
+    <!-- END CONTENT -->
+
+    <!-- FOOTER-->
+    <div style='text-align: center; position: sticky;'>
+      <div style='margin-bottom:5%;'> </div>
+      <div class='footer-top'>
+        <div class='container'>
+          <div class='row'>
+          </div>
+        </div>
+      </div>
+
+      <div id='footer'>
+        <div>
+          <center> &#169; Laura Rodríguez Corpas 2023</center>
+        </div>
+      </div>
+    </div>
+    <script>
+
+    </script>
+
+    <script defer='defer' src='https://lauglitch.github.io/lauglitch.com/lauglitchLogic.js'/> 
+    <!-- END FOOTER --> 
+  </body>
+  <!-- END BODY --> 
+</html>
