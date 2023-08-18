@@ -267,8 +267,8 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.14");                          // Debug version
-showEnglishFormMessage(true)
+console.log("V1.16");                          // Debug version
+
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
 
@@ -368,7 +368,7 @@ function setGlobalVariables() {
         setSite('Contact');
         setDevice('Mobile');
     } else {
-        console.log("No existe esta página.");
+        console.log("No existe la página: " + currentURL);
     }
 
     setDisplay()
