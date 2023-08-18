@@ -210,10 +210,10 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
     });
     // Formularios
-    var spanishSubmitButton = document.getElementById('spanish-submit-btn');
-    spanishSubmitButton.value = 'Enviar';
-    var englishSubmitButton = document.getElementById('english-submit-btn');
-    englishSubmitButton.value = 'Send';
+    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
+    if (englishSubmitButton !== null) {
+      englishSubmitButton.value = 'Send';
+    } 
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
