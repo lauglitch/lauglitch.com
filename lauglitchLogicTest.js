@@ -173,21 +173,25 @@ contactButton.addEventListener("click", function () {
 spanishButton.addEventListener("click", function () {
     spanishBFunc();
     setGlobalVariables();
+    changeLanguage('es');
 });
 // When user click on #englishButton
 englishButton.addEventListener("click", function () {
     englishBFunc();
     setGlobalVariables();
+    changeLanguage('en');
 });
 // When user click on #spanishButtonMobile
 spanishButtonMobile.addEventListener("click", function () {
     spanishBFunc();
     setGlobalVariables();
+    changeLanguage('es');
 });
 // When user click on #englishButtonMobile
 englishButtonMobile.addEventListener("click", function () {
     englishBFunc();
     setGlobalVariables();
+    changeLanguage('en');
 });
 // When user click on #contactButtonMobile
 contactButtonMobile.addEventListener("click", function () {
@@ -337,44 +341,36 @@ function setGlobalVariables() {
         setLanguage('ES');
         setSite('Home');
         setDevice('PC');
-        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/home.html') {
         setLanguage('EN');
         setSite('Home');
         setDevice('PC');
-        changeLanguage('en')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto.html') {
         setLanguage('ES');
         setSite('Contact');
         setDevice('PC');
-        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact.html') {
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
-        changeLanguage('en')
     } 
    // MOBILE VERSION
     else if (currentURL === 'https://lauglitchgpt.blogspot.com/?m=1') {
         setLanguage('ES');
         setSite('Home');
         setDevice('Mobile');
-        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/home.html?m=1') {
         setLanguage('EN');
         setSite('Home');
         setDevice('Mobile');
-        changeLanguage('en')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto.html?m=1') {
         setLanguage('ES');
         setSite('Contact');
         setDevice('Mobile');
-        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact.html?m=1') {
         setLanguage('EN');
         setSite('Contact');
         setDevice('Mobile');
-        changeLanguage('en')
     } else {
         console.log("No existe la página: " + currentURL);
     }
