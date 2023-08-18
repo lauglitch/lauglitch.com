@@ -213,9 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
     if (englishSubmitButton !== null) {
       englishSubmitButton.value = 'Send';
-    } else {
-      console.log('englishsubmitButton no se encontró en el documento.');
-    }
+    } 
     });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
