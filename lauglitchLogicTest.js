@@ -267,7 +267,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.19");                          // Debug version
+console.log("V1.20");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -673,15 +673,5 @@ function enableButton(button) {
         button.style.opacity = 1;
         button.disabled = false;
     }
-}
-
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'en,fr,de', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
-function changeLanguage(langCode) {
-    console.log(langCode)
-    var select = document.querySelector('#google_translate_element select');
-    select.value = langCode;
-    select.dispatchEvent(new Event('change'));
 }
 ///////////// END /////////////
