@@ -620,17 +620,21 @@ function readjustContent() {
 
 function showEnglishFormMessage(){
     console.log("showEnglishFormMessage()");
-    if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
-        englishSuccessMessage = ""
-        englishErrorMessage = "An error ocured while sending message"
-        console.log("ERROR")
-    } else if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
-        englishErrorMessage=""
-        englishSuccessMessage = "Message has been sent succesfully" 
-        console.log("SUCCESFUL")
-    } else{
-        console.log("NADA");
+
+    if(document.getElementById(ContactForm2_contact-form-error-message) !== null && document.getElementById(ContactForm2_contact-form-error-message) != null){
+        if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
+            englishSuccessMessage = ""
+            englishErrorMessage = "An error ocured while sending message"
+            console.log("ERROR")
+        } else if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
+            englishErrorMessage=""
+            englishSuccessMessage = "Message has been sent succesfully" 
+            console.log("SUCCESFUL")
+        } else{
+            console.log("NADA");
+        }
     }
+
 }
 
 ///////////// 6 - BUTTONS
