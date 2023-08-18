@@ -267,7 +267,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.17");                          // Debug version
+console.log("V1.18");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -619,8 +619,15 @@ function readjustContent() {
 }
 
 function showEnglishFormMessage(){
+    setTimeout(function() {
+        formMessage();
+        // Otras acciones que deseas realizar después del retraso
+    }, 1000);
+}
+function formMessage() {
     console.log("showEnglishFormMessage()");
-
+    console.log(document.getElementById("#ContactForm2_contact-form-error-message") !== null)
+    console.log(document.getElementById("#ContactForm2_contact-form-success-message") !== null)
     if(document.getElementById("#ContactForm2_contact-form-error-message") !== null && document.getElementById("#ContactForm2_contact-form-success-message") != null){
         if (document.getElementById("#ContactForm2_contact-form-error-message").classList.contains("contact-form-error-message-with-border")){
             englishSuccessMessage = ""
@@ -634,9 +641,7 @@ function showEnglishFormMessage(){
             console.log("NADA");
         }
     }
-
 }
-
 ///////////// 6 - BUTTONS
 // Disable button (darken image, remove click and remove hover
 function disableButton(button) {
