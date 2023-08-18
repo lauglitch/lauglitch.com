@@ -6,7 +6,7 @@
 ///////////// 0.0 - VARIABLES
 // 0.1 - Location Variables
 let language = "ES";    // ES || EN
-let site = "Home";      // Home || Contact
+let site = "Home";      // Home || ContactdropdownButtonsMobile
 let device = 'PC';  // PC || Mobile 
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
@@ -265,7 +265,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.14");                          // Debug version
+console.log("V1.1");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -380,7 +380,7 @@ function setDisplay(){
     let site = getSite();
     let device = getDevice();
 
-    console.log("Language: " + getLanguage() + " / Site: " + getSite() + " / Device: " + getDevice())
+    //console.log("Language: " + getLanguage() + " / Site: " + getSite() + " / Device: " + getDevice())
     webElements.forEach((elem) => {
 
         // #BodyHome & #BodyContact
