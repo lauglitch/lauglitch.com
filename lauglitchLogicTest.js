@@ -71,6 +71,8 @@ var spanishButtonMobile = document.getElementById('spanishButtonMobile');
 var englishButtonMobile = document.getElementById('englishButtonMobile');  
 var contactButtonMobile = document.getElementById('contactButtonMobile');             
     /* */
+var englishErrorMessage = document.getElementById('spanishButtonMobile');  
+var englishSuccessMessage = document.getElementById('englishSuccessMessage');  
 
 // 0.4 - Web Elements Array (contains all variables above in order to Location Variables)
 const webElements = [
@@ -210,10 +212,10 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
     });
     // Formularios
-    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
-    if (englishSubmitButton !== null) {
-      englishSubmitButton.value = 'Send';
-    } 
+    var spanishSubmitButton = document.getElementById('spanish-submit-btn');
+    spanishSubmitButton.value = 'Enviar';
+    var englishSubmitButton = document.getElementById('english-submit-btn');
+    englishSubmitButton.value = 'Send';
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
@@ -238,7 +240,7 @@ $('#langButtonMobile').on('click', function() {
         langDropdownMobile.style.display = 'block';
     }
 });
-  
+
 ///////////// 1 - GETTERS AND SETTERS
 function setLanguage(lang) {
     language = lang;
@@ -265,8 +267,8 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.15");                          // Debug version
-
+console.log("V1.14");                          // Debug version
+showEnglishFormMessage(true)
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
 
@@ -614,6 +616,21 @@ function readjustContent() {
     }
 
     changeNavbarAccordingToDevice();
+}
+
+function showEnglishFormMessage(){
+    console.log("showEnglishFormMessage()");
+    if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
+        englishSuccessMessage = ""
+        englishErrorMessage = "An error ocured while sending message"
+        console.log("ERROR")
+    } else if (document.getElementById(ContactForm2_contact-form-error-message).classList.contains("contact-form-error-message-with-border")){
+        englishErrorMessage=""
+        englishSuccessMessage = "Message has been sent succesfully" 
+        console.log("SUCCESFUL")
+    } else{
+        console.log("NADA");
+    }
 }
 
 ///////////// 6 - BUTTONS
