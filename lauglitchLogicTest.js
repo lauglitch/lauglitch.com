@@ -214,6 +214,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (englishSubmitButton !== null) {
       englishSubmitButton.value = 'Send';
     } 
+    var errorMessage = document.querySelector('#ContactForm2_contact-form-submit .contact-form-error-message');
+    var successMessage = document.querySelector('##ContactForm2_contact-form-submit .contact-form-success-message');
+    errorMessage.textContent = 'An error occurred while submitting the form.';
+    successMessage.textContent = 'Form submitted successfully.';
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
