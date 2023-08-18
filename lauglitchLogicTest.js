@@ -214,8 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (englishSubmitButton !== null) {
       englishSubmitButton.value = 'Send';
     } 
-    var errorMessage = document.querySelector('#ContactForm2_contact-form-submit .contact-form-error-message');
-    var successMessage = document.querySelector('#ContactForm2_contact-form-submit .contact-form-success-message');
+    var errorMessage = document.querySelector('#ContactForm2_contact-form-error-message');
+    var successMessage = document.querySelector('#ContactForm2_contact-form-success-message');
     errorMessage.textContent = 'An error occurred while submitting the form.';
     successMessage.textContent = 'Form submitted successfully.';
 });
@@ -269,7 +269,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.14");                          // Debug version
+console.log("V1.15");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
