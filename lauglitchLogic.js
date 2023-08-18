@@ -209,12 +209,20 @@ document.addEventListener("DOMContentLoaded", function () {
     langDropdownMobile.addEventListener("click", function (event) {
       event.stopPropagation();
     });
-    // Formularios
+    // English Form
     var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
     if (englishSubmitButton !== null) {
       englishSubmitButton.value = 'Send';
     } 
-    });
+    var englishSuccessMessage = document.querySelector('#ContactForm2_contact-form-success-message');
+    if (englishSuccessMessage !== null) {
+        englishSuccessMessage.value = 'Your message has been sent successfully';
+    } 
+    var englishErrorMessage = document.querySelector('#ContactForm2_contact-form-error-message');
+    if (englishErrorMessage !== null) {
+        englishErrorMessage.value = 'Error sending the message';
+    } 
+});
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
         langDropdownMobile.style.display = 'none';
