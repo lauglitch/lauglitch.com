@@ -212,10 +212,10 @@ document.addEventListener("DOMContentLoaded", function () {
       event.stopPropagation();
     });
     // Formularios
-    var spanishSubmitButton = document.getElementById('spanish-submit-btn');
-    spanishSubmitButton.value = 'Enviar';
-    var englishSubmitButton = document.getElementById('english-submit-btn');
-    englishSubmitButton.value = 'Send';
+    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
+    if (englishSubmitButton !== null) {
+      englishSubmitButton.value = 'Send';
+    } 
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
@@ -267,7 +267,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.14");                          // Debug version
+console.log("V1.15");                          // Debug version
 showEnglishFormMessage(true)
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
