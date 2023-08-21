@@ -839,6 +839,17 @@ samp {
     margin-left: -15px
 }
 
+#contactStyleSmall {
+    width: 100%;
+    margin-top: -20%;
+    margin-bottom: 15%;
+}
+
+#contactStyleLarge {
+    width: 70%; 
+    margin-top: -10%;
+}
+
 #content {
     width: 712px;
     padding: 20px 0 10px;
@@ -1096,6 +1107,34 @@ dfn {
 }
 
 /******************** F@ ********************/
+#contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+  
+label {
+display: block;
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+}
+
+button {
+background-color: #007bff;
+color: white;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+}
+
+  
 .feed-links {
     display: none
 }
