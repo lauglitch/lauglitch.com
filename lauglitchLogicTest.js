@@ -262,7 +262,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.19");                          // Debug version
+console.log("V1.20");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
