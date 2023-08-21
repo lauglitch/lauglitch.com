@@ -173,25 +173,21 @@ contactButton.addEventListener("click", function () {
 spanishButton.addEventListener("click", function () {
     spanishBFunc();
     setGlobalVariables();
-    changeLanguage('es');
 });
 // When user click on #englishButton
 englishButton.addEventListener("click", function () {
     englishBFunc();
     setGlobalVariables();
-    changeLanguage('en');
 });
 // When user click on #spanishButtonMobile
 spanishButtonMobile.addEventListener("click", function () {
     spanishBFunc();
     setGlobalVariables();
-    changeLanguage('es');
 });
 // When user click on #englishButtonMobile
 englishButtonMobile.addEventListener("click", function () {
     englishBFunc();
     setGlobalVariables();
-    changeLanguage('en');
 });
 // When user click on #contactButtonMobile
 contactButtonMobile.addEventListener("click", function () {
@@ -215,11 +211,6 @@ document.addEventListener("DOMContentLoaded", function () {
     langDropdownMobile.addEventListener("click", function (event) {
       event.stopPropagation();
     });
-    // Formularios
-    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
-    if (englishSubmitButton !== null) {
-      englishSubmitButton.value = 'Send';
-    } 
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
@@ -271,7 +262,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.22");                          // Debug version
+console.log("V1.19");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -341,36 +332,44 @@ function setGlobalVariables() {
         setLanguage('ES');
         setSite('Home');
         setDevice('PC');
+        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/home.html') {
         setLanguage('EN');
         setSite('Home');
         setDevice('PC');
+        changeLanguage('en')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto.html') {
         setLanguage('ES');
         setSite('Contact');
         setDevice('PC');
+        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact.html') {
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
+        changeLanguage('en')
     } 
    // MOBILE VERSION
     else if (currentURL === 'https://lauglitchgpt.blogspot.com/?m=1') {
         setLanguage('ES');
         setSite('Home');
         setDevice('Mobile');
+        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/home.html?m=1') {
         setLanguage('EN');
         setSite('Home');
         setDevice('Mobile');
+        changeLanguage('en')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto.html?m=1') {
         setLanguage('ES');
         setSite('Contact');
         setDevice('Mobile');
+        changeLanguage('es')
     } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact.html?m=1') {
         setLanguage('EN');
         setSite('Contact');
         setDevice('Mobile');
+        changeLanguage('en')
     } else {
         console.log("No existe la página: " + currentURL);
     }
@@ -608,6 +607,12 @@ function readjustContent() {
         DivContactLeft.style.marginLeft = "10%"
         DivContactRight.style.marginLeft = "10%"
         DivContactLeft.style.marginBottom = "-10%"
+
+        spanishForm.classList.add("contactStyleSmall")
+        englishForm.classList.add("contactStyleSmall")
+        spanishForm.classList.remove("contactStyleLarge")
+        englishForm.classList.remove("contactStyleLarge")
+
     } else {
         imageContainers.forEach(container => {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
@@ -617,36 +622,16 @@ function readjustContent() {
         // Restart both columns 
         DivContactLeft.style.marginLeft = "0%"
         DivContactRight.style.marginLeft = "0%"
+
+        spanishForm.classList.add("contactStyleLarge")
+        englishForm.classList.add("contactStyleLarge")
+        spanishForm.classList.remove("contactStyleSmall")
+        englishForm.classList.remove("contactStyleSmall")
     }
 
     changeNavbarAccordingToDevice();
 }
 
-function showEnglishFormMessage(){
-    setTimeout(function() {
-        formMessage();
-        // Otras acciones que deseas realizar después del retraso
-    }, 1000);
-}
-function formMessage() {
-    console.log("showEnglishFormMessage()");
-
-    console.log(document.getElementById("#ContactForm2_contact-form-error-message") !== null)
-    console.log(document.getElementById("#ContactForm2_contact-form-success-message") !== null)
-    if(document.getElementById("#ContactForm2_contact-form-error-message") !== null && document.getElementById("#ContactForm2_contact-form-success-message") != null){
-        if (document.getElementById("#ContactForm2_contact-form-error-message").classList.contains("contact-form-error-message-with-border")){
-            englishSuccessMessage = ""
-            englishErrorMessage = "An error ocured while sending message"
-            console.log("ERROR")
-        } else if (document.getElementById("#ContactForm2_contact-form-success-message").classList.contains("contact-success-message-with-border")){
-            englishErrorMessage=""
-            englishSuccessMessage = "Message has been sent succesfully" 
-            console.log("SUCCESFUL")
-        } else{
-            console.log("NADA");
-        }
-    }
-}
 ///////////// 6 - BUTTONS
 // Disable button (darken image, remove click and remove hover
 function disableButton(button) {
@@ -671,43 +656,5 @@ function enableButton(button) {
     }
 }
 
-// Configura la conexión con Firebase usando tu propia configuración
-const firebaseConfig = {
-    apiKey: "AIzaSyC0lzLboQBVszPlr5msPjIDhrnOKnO1bSE",
-    authDomain: "lauglitchforms.firebaseapp.com",
-    projectId: "lauglitchforms",
-    storageBucket: "lauglitchforms.appspot.com",
-    messagingSenderId: "80257562725",
-    appId: "1:80257562725:web:1611cd6481a45defc22e8c",
-    measurementId: "G-CBHY3RVTPV"
-  };
 
-firebase.initializeApp(firebaseConfig);
-
-var database = firebase.database();
-  
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-document.addEventListener('DOMContentLoaded', function() {
-    var enviarBtn = document.getElementById('enviar');
-    var formulario = document.getElementById('miFormulario');
-
-    enviarBtn.addEventListener('click', function() {
-        var nombre = document.getElementById('nombre').value;
-        var correo = document.getElementById('correo').value;
-        var mensaje = document.getElementById('mensaje').value;
-
-        var nuevoRegistro = database.ref('formularios').push();
-        nuevoRegistro.set({
-            nombre: nombre,
-            correo: correo,
-            mensaje: mensaje
-        });
-
-        alert('¡Formulario enviado y datos guardados en Firebase!');
-        formulario.reset();
-    });
-});
 ///////////// END /////////////
