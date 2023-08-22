@@ -144,18 +144,19 @@ var vgImages = [
     },
 ];
 function reloadImages() {
-var divImages = document.getElementById('DivImages');
-var template = document.getElementById('image-template');
+    var divImages = document.getElementById('DivImages');
+    var template = document.getElementById('image-template');
 
-vgImages.forEach(function(imageData) {
-    var clone = template.content.cloneNode(true);
-    clone.querySelector('img').src = imageData.src;
-    clone.querySelector('img').alt = imageData.alt;
-    clone.querySelector('a').textContent = imageData.alt;
-    clone.querySelector('a').href = imageData.link;
-    divImages.appendChild(clone);
-});
+    vgImages.forEach(function(imageData) {
+        var clone = template.content.cloneNode(true);
+        clone.querySelector('img').src = imageData.src;
+        clone.querySelector('img').alt = imageData.alt;
+        clone.querySelector('a').textContent = imageData.alt;
+        clone.querySelector('a').href = imageData.link;
+        divImages.appendChild(clone);
+    });
 }
+
 document.addEventListener('DOMContentLoaded', reloadImages);
   
 // 0.6 - BUTTON EVENTS
@@ -262,7 +263,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.20");                          // Debug version
+console.log("V1.19");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -605,20 +606,28 @@ function readjustContent() {
         spanishForm.classList.remove("contactStyleLarge")
         englishForm.classList.remove("contactStyleLarge")
 
+
     } else {
         imageContainers.forEach(container => {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
             container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Agregar nuevas clases para pantallas grandes
         });
 
+        if (window.innerWidth < 991) {
+            spanishForm.classList.add("contactStyleSmall")
+            englishForm.classList.add("contactStyleSmall")
+            spanishForm.classList.remove("contactStyleLarge")
+            englishForm.classList.remove("contactStyleLarge")
+        } else {
+            spanishForm.classList.add("contactStyleLarge")
+            englishForm.classList.add("contactStyleLarge")
+            spanishForm.classList.remove("contactStyleSmall")
+            englishForm.classList.remove("contactStyleSmall")
+        }
+
         // Restart both columns 
         DivContactLeft.style.marginLeft = "0%"
-        DivContactRight.style.marginLeft = "0%"
-
-        spanishForm.classList.add("contactStyleLarge")
-        englishForm.classList.add("contactStyleLarge")
-        spanishForm.classList.remove("contactStyleSmall")
-        englishForm.classList.remove("contactStyleSmall")
+        DivContactRight.style.marginLeft = "0%"        
     }
 
     changeNavbarAccordingToDevice();
