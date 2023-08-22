@@ -839,13 +839,13 @@ samp {
     margin-left: -15px
 }
 
-#contactStyleSmall {
+.contactStyleSmall {
     width: 100%;
     margin-top: -20%;
     margin-bottom: 15%;
 }
 
-#contactStyleLarge {
+.contactStyleLarge {
     width: 70%; 
     margin-top: -10%;
 }
