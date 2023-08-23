@@ -8,7 +8,7 @@
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
-let version = "V1.24"
+let version = "V1.25"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -585,7 +585,7 @@ function changeNavbarAccordingToDevice() {
         // Hide langDropdownMobile
         langDropdownMobile.style.display='none';
 
-        disable(contactButtonMobile)
+        disableButton(contactButtonMobile)
     } else {
         DivKeypad.classList.add('row');  // Add row class to DivKeypad
 
