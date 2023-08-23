@@ -6,8 +6,9 @@
 ///////////// 0.0 - VARIABLES
 // 0.1 - Location Variables
 let language = "ES";    // ES || EN
-let site = "Home";      // Home || ContactdropdownButtonsMobile
-let device = 'PC';  // PC || Mobile 
+let site = "Home";      // Home || Contact
+let device = 'PC';      // PC || Mobile 
+let version = "V1.1"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -71,6 +72,10 @@ var spanishButtonMobile = document.getElementById('spanishButtonMobile');
 var englishButtonMobile = document.getElementById('englishButtonMobile');  
 var contactButtonMobile = document.getElementById('contactButtonMobile');             
     /* */
+var englishErrorMessage = document.getElementById('spanishButtonMobile');  
+var englishSuccessMessage = document.getElementById('englishSuccessMessage');  
+
+var doneImage = document.getElementById('doneImage');  
 
 // 0.4 - Web Elements Array (contains all variables above in order to Location Variables)
 const webElements = [
@@ -142,18 +147,19 @@ var vgImages = [
     },
 ];
 function reloadImages() {
-var divImages = document.getElementById('DivImages');
-var template = document.getElementById('image-template');
+    var divImages = document.getElementById('DivImages');
+    var template = document.getElementById('image-template');
 
-vgImages.forEach(function(imageData) {
-    var clone = template.content.cloneNode(true);
-    clone.querySelector('img').src = imageData.src;
-    clone.querySelector('img').alt = imageData.alt;
-    clone.querySelector('a').textContent = imageData.alt;
-    clone.querySelector('a').href = imageData.link;
-    divImages.appendChild(clone);
-});
+    vgImages.forEach(function(imageData) {
+        var clone = template.content.cloneNode(true);
+        clone.querySelector('img').src = imageData.src;
+        clone.querySelector('img').alt = imageData.alt;
+        clone.querySelector('a').textContent = imageData.alt;
+        clone.querySelector('a').href = imageData.link;
+        divImages.appendChild(clone);
+    });
 }
+
 document.addEventListener('DOMContentLoaded', reloadImages);
   
 // 0.6 - BUTTON EVENTS
@@ -209,11 +215,6 @@ document.addEventListener("DOMContentLoaded", function () {
     langDropdownMobile.addEventListener("click", function (event) {
       event.stopPropagation();
     });
-    // English Form
-    var englishSubmitButton = document.querySelector('#ContactForm2_contact-form-submit');
-    if (englishSubmitButton !== null) {
-      englishSubmitButton.value = 'Send';
-    } 
 });
 $('#moreButton').on('click', function() {
     if (langDropdownMobile.style.display === "block"){
@@ -238,7 +239,7 @@ $('#langButtonMobile').on('click', function() {
         langDropdownMobile.style.display = 'block';
     }
 });
-  
+
 ///////////// 1 - GETTERS AND SETTERS
 function setLanguage(lang) {
     language = lang;
@@ -265,7 +266,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.1");                          // Debug version
+console.log(version);                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -303,7 +304,7 @@ function redirectTo(url) {
     content.style.transform = "translateY(20px)";
     setTimeout(() => {
         window.location.href = url;
-    }, 250); 
+    }, 500); 
 }
 // Evento al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
@@ -347,7 +348,15 @@ function setGlobalVariables() {
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
-    } 
+    } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html'){
+        setLanguage('ES');
+        setSite('Contact');
+        setDevice('PC');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contact/done.html'){
+        setLanguage('EN');
+        setSite('Contact');
+        setDevice('PC');
+    }
    // MOBILE VERSION
     else if (currentURL === 'https://www.lauglitch.com/?m=1') {
         setLanguage('ES');
@@ -365,8 +374,16 @@ function setGlobalVariables() {
         setLanguage('EN');
         setSite('Contact');
         setDevice('Mobile');
+    } else if (currentURL === 'https://www.lauglitch.com/p/contacto/done.html?m=1'){
+        setLanguage('ES');
+        setSite('Contact');
+        setDevice('PC');
+    } else if (currentURL === 'https://www.lauglitch.com//p/contact/done.html?m=1'){
+        setLanguage('EN');
+        setSite('Contact');
+        setDevice('PC');
     } else {
-        console.log("No existe esta página.");
+        console.log("No existe la página: " + currentURL);
     }
 
     setDisplay()
@@ -379,8 +396,9 @@ function setDisplay(){
     let lang = getLanguage();       // TODO: Intentar borrar estos 3 y usar los getters
     let site = getSite();
     let device = getDevice();
-
-    //console.log("Language: " + getLanguage() + " / Site: " + getSite() + " / Device: " + getDevice())
+    var currentURL = window.location.href;
+    
+    console.log("Language: " + getLanguage() + " / Site: " + getSite() + " / Device: " + getDevice())
     webElements.forEach((elem) => {
 
         // #BodyHome & #BodyContact
@@ -410,10 +428,20 @@ function setDisplay(){
         if(!(elem === langDropdown || elem === moreDropdown || elem === langDropdownMobile))
             elem.style.display = 'block';
     });
+
     toHide.forEach((elem) => {
         //console.log("No " + elem.id)
         elem.style.display = 'none';
     });
+
+    // Show or hider okButton
+    if ((currentURL === 'https://www.lauglitch.com/p/contacto/done.html') || (currentURL === 'https://www.lauglitch.com/p/contact/done.html')
+    || (currentURL === 'https://www.lauglitch.com/p/contacto/done.html?m=1') ||(currentURL === 'https://www.lauglitch.com/p/contact/done.html?m=1')){
+        doneImage.style.display = 'block';
+    } else {
+        doneImage.style.display = 'none';
+    }
+
 }
 // Change Navbar buttons based on URL
 function switchKeypadButtons(){
@@ -421,13 +449,12 @@ function switchKeypadButtons(){
         enableButton(langButton) // visible on all PC URL
     else 
         enableButton(moreButton) // visible on all Mobile URL
+
+    if(getDevice() === 'PC'){
         if (getLanguage() === 'ES' & getSite() === 'Home'){
             disableButton(lauglitchButton)
             disableButton(spanishButton)
-            disableButton(spanishButtonMobile)
     
-            enableButton(englishButtonMobile)
-            enableButton(contactButtonMobile)
             enableButton(englishButton)
             enableButton(contactButton)
             englishBFunc = redirectToHomeEN;
@@ -435,10 +462,7 @@ function switchKeypadButtons(){
         } else if (getLanguage() === 'EN' & getSite() === 'Home'){
             disableButton(lauglitchButton)
             disableButton(englishButton)
-            disableButton(englishButtonMobile)
     
-            enableButton(spanishButtonMobile)
-            enableButton(contactButtonMobile)
             enableButton(spanishButton)
             enableButton(contactButton)
             spanishBFunc = redirectToHomeES;
@@ -446,11 +470,7 @@ function switchKeypadButtons(){
         } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
             disableButton(spanishButton)
             disableButton(contactButton)
-            disableButton(spanishButtonMobile)
-            disableButton(contactButtonMobile)
     
-            enableButton(lauglitchButton)
-            enableButton(englishButtonMobile)
             enableButton(lauglitchButton)
             enableButton(englishButton)
             lauglitchBFunc = redirectToHomeES;
@@ -458,11 +478,7 @@ function switchKeypadButtons(){
         } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
             disableButton(englishButton)
             disableButton(contactButton)
-            disableButton(englishButtonMobile)
-            disableButton(contactButtonMobile)
     
-            enableButton(lauglitchButton)
-            enableButton(spanishButtonMobile)
             enableButton(lauglitchButton)
             enableButton(spanishButton)
             lauglitchBFunc = redirectToHomeEN;
@@ -470,22 +486,61 @@ function switchKeypadButtons(){
         } else {
             console.log('Variables de localización no identificadas en PC.')
         }
-
-         // Darken the current language to report the user not to click again on it 
+        
+        // Darken the current language to report the user not to click again on it 
         const dropdownButtons = document.querySelectorAll('#langDropdown .dropdown-item');
         dropdownButtons.forEach(button => {
             if (button.disabled) {
                 button.style.opacity = 0.5;
             }
         });
+    } else if (getDevice() === 'Mobile'){
+        if (getLanguage() === 'ES' & getSite() === 'Home'){
+            disableButton(lauglitchButton)
+            disableButton(spanishButtonMobile)
+    
+            enableButton(englishButtonMobile)
+            enableButton(contactButtonMobile)
+            englishBFunc = redirectToHomeEN;
+            contactBFunc = redirectToContactES;
+        } else if (getLanguage() === 'EN' & getSite() === 'Home'){
+            disableButton(lauglitchButton)
+            disableButton(englishButtonMobile)
+    
+            enableButton(spanishButtonMobile)
+            enableButton(contactButtonMobile)
+            spanishBFunc = redirectToHomeES;
+            contactBFunc = redirectToContactEN;
+        } else if (getLanguage() === 'ES' & getSite() === 'Contact'){
+            disableButton(spanishButtonMobile)
+            disableButton(contactButtonMobile)
+    
+            enableButton(lauglitchButton)
+            enableButton(englishButtonMobile)
+            lauglitchBFunc = redirectToHomeES;
+            englishBFunc = redirectToContactEN;
+        } else if (getLanguage() === 'EN' & getSite() === 'Contact') {
+            disableButton(englishButtonMobile)
+            disableButton(contactButtonMobile)
+    
+            enableButton(lauglitchButton)
+            enableButton(spanishButtonMobile)
+            lauglitchBFunc = redirectToHomeEN;
+            spanishBFunc = redirectToContactES;
+        } else {
+            console.log('Variables de localización no identificadas en Mobile.')
+        }
 
         // Darken the current language to report the user not to click again on it 
-        const dropdownButtonsMobile = document.querySelectorAll('#langDropdownMobile .dropdown-item-mobile');
-        dropdownButtonsMobile.forEach(button => {
+        const dropdownButtons = document.querySelectorAll('#langDropdownMobile .dropdown-item-mobile');
+        dropdownButtons.forEach(button => {
             if (button.disabled) {
                 button.style.opacity = 0.5;
             }
         });
+    } else {
+        console.log("Dispositivo no reconocido.")
+    }  
 }
 
 ///////////// 5 - DEVICE CONTROL (PC and Mobile)
@@ -529,6 +584,11 @@ function changeNavbarAccordingToDevice() {
 
         // Hide langDropdownMobile
         langDropdownMobile.style.display='none';
+
+        if(getSite() === 'Contact')
+            disableButton(contactButtonMobile)
+        else if(getSite() === 'Home')
+            enableButton(contactButtonMobile)
     } else {
         DivKeypad.classList.add('row');  // Add row class to DivKeypad
 
@@ -574,16 +634,36 @@ function readjustContent() {
         // Translate both columns 
         DivContactLeft.style.marginLeft = "10%"
         DivContactRight.style.marginLeft = "10%"
-        DivContactLeft.style.marginBottom = "-10%"
+
+        spanishForm.classList.add("contactStyleSmall")
+        englishForm.classList.add("contactStyleSmall")
+        spanishForm.classList.remove("contactStyleLarge")
+        englishForm.classList.remove("contactStyleLarge")
+
+        
     } else {
         imageContainers.forEach(container => {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
             container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Agregar nuevas clases para pantallas grandes
         });
 
+        if (window.innerWidth < 991) {
+            spanishForm.classList.add("contactStyleSmall")
+            englishForm.classList.add("contactStyleSmall")
+            spanishForm.classList.remove("contactStyleLarge")
+            englishForm.classList.remove("contactStyleLarge")
+
+        } else {
+            spanishForm.classList.add("contactStyleLarge")
+            englishForm.classList.add("contactStyleLarge")
+            spanishForm.classList.remove("contactStyleSmall")
+            englishForm.classList.remove("contactStyleSmall")
+
+        }
+
         // Restart both columns 
         DivContactLeft.style.marginLeft = "0%"
-        DivContactRight.style.marginLeft = "0%"
+        DivContactRight.style.marginLeft = "0%"      
     }
 
     changeNavbarAccordingToDevice();
