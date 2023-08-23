@@ -660,7 +660,7 @@ function enableButton(button) {
 // Función para aplicar el margen superior al contenedor
 function applyMarginToContainer() {
     var iframeContainer = document.getElementById("iframe-container");
-    iframeContainer.style.marginTop = "20px"; // Ajusta el valor según sea necesario
+    iframeContainer.style.marginTop = "-50%"; // Ajusta el valor según sea necesario
 }
 
 // Observador de mutación para detectar cuando el iframe se inserta
