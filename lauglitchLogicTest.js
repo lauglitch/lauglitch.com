@@ -8,7 +8,7 @@
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
-let version = "V1.23"
+let version = "V1.24"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -434,10 +434,6 @@ function setDisplay(){
         elem.style.display = 'none';
     });
 
-    if (getDevice() === 'PC' && getSite() === 'Contact' && window.innerWidth < 768){
-        disable(contactButtonMobile)
-    } 
-
     // Show or hider okButton
     if ((currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html') || (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html')
     || (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html?m=1') ||(currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html?m=1')){
@@ -490,8 +486,8 @@ function switchKeypadButtons(){
         } else {
             console.log('Variables de localización no identificadas en PC.')
         }
-
-         // Darken the current language to report the user not to click again on it 
+        
+        // Darken the current language to report the user not to click again on it 
         const dropdownButtons = document.querySelectorAll('#langDropdown .dropdown-item');
         dropdownButtons.forEach(button => {
             if (button.disabled) {
@@ -588,6 +584,8 @@ function changeNavbarAccordingToDevice() {
 
         // Hide langDropdownMobile
         langDropdownMobile.style.display='none';
+
+        disable(contactButtonMobile)
     } else {
         DivKeypad.classList.add('row');  // Add row class to DivKeypad
 
