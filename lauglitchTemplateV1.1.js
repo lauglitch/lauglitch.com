@@ -16,16 +16,16 @@
       </b:if>
       <b:include data='blog' name='all-head-content'/>
 
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'/>
 
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'/>
+      <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'/>
       
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin='anonymous;'/>
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&amp;display=swap" rel="stylesheet"/>
-      <link href='lauglitchStyle.css' rel='stylesheet' type='text/css'/>
-
+      <link href='https://fonts.googleapis.com' rel='preconnect'/>
+      <link crossorigin='anonymous;' href='https://fonts.gstatic.com' rel='preconnect'/>
+      <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP&amp;display=swap' rel='stylesheet'/>
+      <link href='https://lauglitch.github.io/lauglitch.com/lauglitchStyle.css' rel='stylesheet' type='text/css'/>
+      
       <b:skin><![CDATA[     
       /*
       -----------------------------------------------
@@ -48,36 +48,37 @@
 
 <!-- BODY -->
   <body>
-    <div class="loader-container">
-        <div class="loader"></div>
+  <div id='translated_content'>
+    <div class='loader-container'>
+        <div class='loader'/>
     </div>
     
     <!-- NAVBAR -->
-    <nav class="navbar navbar-inverse" style="background-color: #3b5998; animate: true; transition: all 0.15s;">    
-      <div class="container"> 
+    <nav class='navbar navbar-inverse' style='background-color: #3b5998; animate: true; transition: all 0.15s;'>    
+      <div class='container'> 
 
-        <div class="row">
+        <div class='row'>
             <!-- Logo Section -->
-            <div id="DivLogo" class="col-lg-4 col-md-4 col-sm-6 col-12">
-                <button id='lauglitchButton' class='botonLogo transparent-button'>
+            <div class='col-lg-4 col-md-4 col-sm-6 col-12' id='DivLogo'>
+                <button class='botonLogo transparent-button' id='lauglitchButton'>
                     <img src='https://imgur.com/uuOdmOV.png'/>
                 </button>
             </div>
         </div>
 
-        <div id="DivKeypad" class="largeNavbar row" >
+        <div class='largeNavbar row' id='DivKeypad'>
           <!-- Language Selection Dropdown -->
-          <div class="largeNavbar dropdown col-lg-4 col-md-4 col-sm-6 col-12" style="margin-top: 5%; margin-right: 15%;">
+          <div class='largeNavbar dropdown col-lg-4 col-md-4 col-sm-6 col-12' style='margin-top: 5%; margin-right: 15%;'>
 
-            <button id="langButton" class="largeNavbar boton transparent-button dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src='https://imgur.com/FZpaV40.png' width="50%" height="50%"/>
+            <button aria-expanded='false' aria-haspopup='true' class='largeNavbar boton transparent-button dropdown-toggle' data-toggle='dropdown' id='langButton' type='button'>
+                <img height='50%' src='https://imgur.com/FZpaV40.png' width='50%'/>
             </button>
             
-            <div id="langDropdown" class="dropdown-menu dropdown-large-margin align-center" aria-labelledby="langButton">
-                <button id='spanishButton' class="largeNavbar botonDrop transparent-button dropdown-item" type="button">
+            <div aria-labelledby='langButton' class='dropdown-menu dropdown-large-margin align-center' id='langDropdown'>
+                <button class='largeNavbar botonDrop transparent-button dropdown-item' id='spanishButton' type='button'>
                     <img src='https://imgur.com/iU8KDiy.png'/>
                 </button>
-                <button id='englishButton' class="largeNavbar botonDrop transparent-button dropdown-item" type="button">
+                <button class='largeNavbar botonDrop transparent-button dropdown-item' id='englishButton' onclick='changeLanguage(&apos;en&apos;)' type='button'>
                     <img src='https://imgur.com/Wmd2JSQ.png'/>
                 </button>
             </div>
@@ -85,37 +86,37 @@
           </div>
 
           <!-- Contact Button (On Mobile, each button occupies full width) -->
-          <div class="col-lg-4 col-md-4 col-sm-12 col-12" style="margin-top: 5%;">
-              <div class="largeNavbar">
+          <div class='col-lg-4 col-md-4 col-sm-12 col-12' style='margin-top: 5%;'>
+              <div class='largeNavbar'>
                   <button class='largeNavbar boton transparent-button' id='contactButton'>
-                      <img src='https://imgur.com/WyqsCu9.png' height='100%' width='100%'/>
+                      <img height='100%' src='https://imgur.com/WyqsCu9.png' width='100%'/>
                   </button> 
               </div> 
           </div> 
 
         </div>
 
-        <div id="DivMore" class="row" >
+        <div class='row' id='DivMore'>
           <!-- "More" Button (For Mobile View, each button occupies full width) -->
-          <div class="dropdown col-lg-4 col-md-4 col-sm-6 col-12" style="margin-top: 5%;">
-              <button id="moreButton" class="smallNavbar boton transparent-button dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src='https://imgur.com/skCGjQf.png' width="50%" height="50%"/>
+          <div class='dropdown col-lg-4 col-md-4 col-sm-6 col-12' style='margin-top: 5%;'>
+              <button aria-expanded='false' aria-haspopup='true' class='smallNavbar boton transparent-button dropdown-toggle' data-toggle='dropdown' id='moreButton' type='button'>
+                  <img height='50%' src='https://imgur.com/skCGjQf.png' width='50%'/>
               </button> 
 
-              <div id="moreDropdown" class="dropdown-menu dropdown-menu-center dropdown-small-margin" aria-labelledby="moreButton">
-                    <button id='contactButtonMobile' class="smallNavbar botonDrop transparent-button dropdown-item" type="button">
-                        <img src='https://imgur.com/Oytrah3'/>
+              <div aria-labelledby='moreButton' class='dropdown-menu dropdown-menu-center dropdown-small-margin' id='moreDropdown'>
+                    <button class='smallNavbar botonDrop transparent-button dropdown-item' id='contactButtonMobile' type='button'>
+                        <img src='https://imgur.com/WyqsCu9.png'/>
                     </button>
                     
-                    <button id="langButtonMobile" class="smallNavbar transparent-button dropdown-toggle dropdown-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src='https://imgur.com/FZpaV40.png' class="langDropdownMobile-margin" width="50%" height="50%"/>
+                    <button aria-expanded='false' aria-haspopup='true' class='smallNavbar transparent-button dropdown-toggle dropdown-item' data-toggle='dropdown' id='langButtonMobile' type='button'>
+                        <img class='langDropdownMobile-margin' height='50%' src='https://imgur.com/FZpaV40.png' width='50%'/>
                     </button>
 
-                    <div id="langDropdownMobile" class="smallNavbar dropdown-menu dropdown-menu-center" aria-labelledby="langButton">
-                        <button id='spanishButtonMobile' class="smallNavbar botonDrop transparent-button dropdown-item" type="button">
+                    <div aria-labelledby='langButton' class='smallNavbar dropdown-menu dropdown-menu-center' id='langDropdownMobile'>
+                        <button class='smallNavbar botonDrop transparent-button dropdown-item' id='spanishButtonMobile' type='button'>
                             <img src='https://imgur.com/yMcZxYg.png'/>
                         </button>
-                        <button id='englishButtonMobile' class="smallNavbar smallNavbar botonDrop transparent-button dropdown-item" type="button">
+                        <button class='smallNavbar smallNavbar botonDrop transparent-button dropdown-item' id='englishButtonMobile' type='button'>
                             <img src='https://imgur.com/WNRh5O7.png'/>
                         </button>
                     </div>
@@ -136,12 +137,12 @@
         <section id='DivBio'>
           <div class='DivBio-block'>
 
-            <img height='150' src='https://i.imgur.com/ryP6CTY.png' width='150'/>
+            <img height='150' src='https://i.imgur.com/ryP6CTY.png' width='150' style='margin-top:2%'/>
             <h1>
               @lauglitch
             </h1>
 
-            <p id='spanishBio'>
+            <p id='spanishBio' style='font-size:20px !important;'>
               Diseñadora y Desarrolladora de Videojuegos 🎮 😄
               <br/>
               Amante de los gatitos 🐱, la música 🎵 y los viajes 🌍
@@ -150,7 +151,7 @@
               <br/>
             </p>
 
-            <p id='englishBio'>
+            <p id='englishBio' style='font-size:20px !important;'>
               Videogame Designer and Developer 🎮 😄
               <br/>
               Kitty 🐱, music 🎵 and travelling 🌍 lover
@@ -161,16 +162,16 @@
           </div>
         </section>
 
-        <template id="image-template">
-          <div class="image-container">
-            <img class="img-fluid" />
-            <div class="centered-text margenesTitulosJuegos">
-              <a></a>
+        <template id='image-template'>
+          <div class='image-container'>
+            <img class='img-fluid'/>
+            <div class='centered-text margenesTitulosJuegos'>
+              <a/>
             </div>
           </div>
         </template>
         
-        <div id='DivImages' class="container" style='margin-top:5%'>
+        <div class='container' id='DivImages' style='margin-top:5%'>
           
         </div>
 
@@ -178,108 +179,68 @@
 
       <!-- Contact Body (ES/EN) -->
       <div id='BodyContact'>
-        <div class="container">
+        <div class='container'>
   
-          <div class='row divContactRow' >
-              <div id='DivContactLeft' class='col-lg-8 col-md-6 col-10'>
-                <h1 id='spanishContactText' class='hContactTitle'> Contacto </h1>
-                <h1 id='englishContactText' class='hContactTitle'> Contact </h1>
+          <div class='row divContactRow' style = 'margin-top:2%'>
+              <div class='col-lg-8 col-md-6 col-10' id='DivContactLeft'>
+                <h1 class='hContactTitle' id='spanishContactText'> Contacto </h1>
+                <h1 class='hContactTitle' id='englishContactText'> Contact </h1>
+                <img height="50" id="doneImage" src="https://imgur.com/dQoPglv.png" width="50" style="margin-top: -68px; margin-left: 160px;"/>
 
-                <div class='col-lg-6 col-md-6 col-12'>
-                  <div  class='container row'> <!--id='DivContactForm'-->
-                    <b:includable id='main'>
-                      <div id='DivContactForm' class='contact-form-widget formularios'>
+                <div class='col-lg-6 col-md-6 col-sm-6 col-12' style='min-width:100%; max-height:600px; margin-bottom:15%'>
+                  <div class='container row' style = 'max-height:600px;'>
 
-                          <!-- Spanish Contact -->
-                          <div id='spanishForm' class='form' style="margin-right:5%">
-                            <form name='contact-form' style=''>
-                                <p>Nombre</p>
-                                <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='25' type='text' value='' />
+                    <!-- Spanish Contact --> 
+                    <div id='spanishForm' style='margin-top: 0%; margin-top: 0%; max-height:700px; overflow: hidden;"'>
+                      <script type="text/javascript" src="https://form.jotform.com/jsform/232343514402040"></script>
+                    </div>
 
-                                <p style="margin-top:10%">Correo electrónico*</p>
-                                <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='25' type='text' value='' />
-
-                                <p style="margin-top:10%">Mensaje*</p>
-                                <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'></textarea>
-                                <p />
-                                <div style="margin-left:40%">
-                                  <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='submit' style='font-size: 18px;'/>
-                                </div>
-                                <p />
-                                <div style='text-align: center; max-width: 222px; width: 100%'>
-                                    <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;' />
-                                    <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;' />
-                                </div>
-                            </form>
-                        </div>
-
-                          <!-- English Contact -->
-                          <div id='englishForm' class='form'>
-                            <form name='contact-form' style=''>
-                                <p>Name</p>
-                                <input class='contact-form-name' expr:id='data:widget.instanceId + &quot;_contact-form-name&quot;' name='name' size='25' style='' type='text' value=''/>
-
-                                <p style="margin-top:10%">Mail*</p> 
-                                <input class='contact-form-email' expr:id='data:widget.instanceId + &quot;_contact-form-email&quot;' name='email' size='25' style='' type='text' value=''/>
-
-                                <p style="margin-top:10%">Message*</p> 
-                                <textarea class='contact-form-email-message' cols='25' expr:id='data:widget.instanceId + &quot;_contact-form-email-message&quot;' name='email-message' rows='5'/>
-                                <p/>
-                                <input class='contact-form-button contact-form-button-submit' expr:id='data:widget.instanceId + &quot;_contact-form-submit&quot;' expr:value='data:contactFormSendMsg' type='button'/>
-                                <p/>
-                                <div style='text-align: center; max-width: 222px; width: 100%'>
-                                <p class='contact-form-error-message' expr:id='data:widget.instanceId + &quot;_contact-form-error-message&quot;'/>
-                                <p class='contact-form-success-message' expr:id='data:widget.instanceId + &quot;_contact-form-success-message&quot;'/>
-                                </div>
-                            </form>
-                          </div>
-
-                      </div>
-                    <b:include name='quickedit'/>
-                    </b:includable>
+                    <!-- English Contact  --> 
+                    <div id='englishForm' style='margin-top: 0%; max-height:600px;'> 
+                      <script type="text/javascript" src="https://form.jotform.com/jsform/232345683956366"></script>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div id='DivContactRight' class='col-lg-4 col-md-6 col-10' >
+              <div class='col-lg-4 col-md-6 col-10' id='DivContactRight'>
                 <h1 id='spanishFindOnText'>Encuéntrame en</h1>
                 <h1 id='englishFindOnText'>Find me on</h1>
 
-                <div class='col-lg-6 col-md-6 col-12'>           
-                  <div id='DivFindMe' class='container row' style = 'margin-top:-5%;'>
-                    <div id='contactLinks' class= ''>
+                <div class='col-lg-6 col-md-6 col-12' style='margin-top:25%; min-width:100%'>           
+                  <div class='container row' id='DivFindMe' style='margin-top:0%;'>
+                    <div class='' id='contactLinks'>
 
                       <div class='contact-links-container'>
-                          <img height='30' src='https://i.imgur.com/5Nm0KK7.png' width='30'></img>
-                          <a href='https://www.linkedin.com/in/laurarodriguezcorpas/' target='_blank' style='font-size:20px !important;'>LinkedIn</a>
+                          <img height='30' src='https://i.imgur.com/5Nm0KK7.png' width='30'/>
+                          <a href='https://www.linkedin.com/in/laurarodriguezcorpas/' style='font-size:20px !important;' target='_blank'>LinkedIn</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://i.imgur.com/NzPu5gC.png' width='30'></img>
-                          <a href='https://lauglitch.itch.io/' target='_blank' style='font-size:20px !important;'>itch.io</a>
+                          <img height='30' src='https://i.imgur.com/NzPu5gC.png' width='30'/>
+                          <a href='https://lauglitch.itch.io/' style='font-size:20px !important;' target='_blank'>itch.io</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://i.imgur.com/avPePyZ.png' width='30'></img>
-                          <a href='https://github.com/lauglitch' target='_blank' style='font-size:20px !important;'>Github</a>
+                          <img height='30' src='https://i.imgur.com/avPePyZ.png' width='30'/>
+                          <a href='https://github.com/lauglitch' style='font-size:20px !important;' target='_blank'>Github</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://i.imgur.com/ASYtMct.png' width='30'></img>
-                          <a href='https://twitter.com/lauglitch' target='_blank' style='font-size:20px !important;'>Twitter</a>
+                          <img height='30' src='https://i.imgur.com/ASYtMct.png' width='30'/>
+                          <a href='https://twitter.com/lauglitch' style='font-size:20px !important;' target='_blank'>Twitter</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://i.imgur.com/V76aIMg.png' width='30'></img>
-                          <a href='https://www.instagram.com/lauglitch/' target='_blank' style='font-size:20px !important;'>Instagram</a>
+                          <img height='30' src='https://i.imgur.com/V76aIMg.png' width='30'/>
+                          <a href='https://www.instagram.com/lauglitch/' style='font-size:20px !important;' target='_blank'>Instagram</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://imgur.com/6wBNFrp.png' width='30'></img>
-                          <a href='https://www.twitch.tv/lauglitch/' target='_blank' style='font-size:20px !important;'>Twitch</a>
+                          <img height='30' src='https://imgur.com/6wBNFrp.png' width='30'/>
+                          <a href='https://www.twitch.tv/lauglitch/' style='font-size:20px !important;' target='_blank'>Twitch</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://imgur.com/6kh73ZU.png' width='30'></img>
-                          <a href='https://www.youtube.com/channel/UCWAWDAv_8jiMMDcurpnYEMg' target='_blank' style='font-size:20px !important;'>YouTube</a>
+                          <img height='30' src='https://imgur.com/6kh73ZU.png' width='30'/>
+                          <a href='https://www.youtube.com/channel/UCWAWDAv_8jiMMDcurpnYEMg' style='font-size:20px !important;' target='_blank'>YouTube</a>
                       </div>
                       <div class='contact-links-container'>
-                          <img height='30' src='https://imgur.com/TR4A0fq.png' style='' width='30'></img>
-                          <a href='https://www.tiktok.com/@lauglitch' target='_blank' style='font-size:20px !important;'>TikTok</a>
+                          <img height='30' src='https://imgur.com/TR4A0fq.png' style='' width='30'/>
+                          <a href='https://www.tiktok.com/@lauglitch' style='font-size:20px !important;' target='_blank'>TikTok</a>
                       </div>
                       
                     </div>
@@ -301,7 +262,6 @@
       <div class='footer-top'>
         <div class='container'>
           <div class='row'>
-            <b:section class='footermain' id='footermainContact' preferred='yes'/>
           </div>
         </div>
       </div>
@@ -312,9 +272,12 @@
         </div>
       </div>
     </div>
+    <b:section id='end'/>
 
-    <script defer='defer' src='lauglitchLogic.js'/> 
-    <!-- END FOOTER --> 
-  </body>
+  <script defer='defer' src='https://lauglitch.github.io/lauglitch.com/lauglitchLogic.js'/> 
+  <!-- END FOOTER -->
+
+</div>
+</body>
   <!-- END BODY --> 
 </html>
