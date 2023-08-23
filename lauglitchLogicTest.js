@@ -7,7 +7,8 @@
 // 0.1 - Location Variables
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
-let device = 'PC';  // PC || Mobile 
+let device = 'PC';      // PC || Mobile 
+let version = "V1.21"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -73,6 +74,8 @@ var contactButtonMobile = document.getElementById('contactButtonMobile');
     /* */
 var englishErrorMessage = document.getElementById('spanishButtonMobile');  
 var englishSuccessMessage = document.getElementById('englishSuccessMessage');  
+
+var doneImage = document.getElementById('doneImage');  
 
 // 0.4 - Web Elements Array (contains all variables above in order to Location Variables)
 const webElements = [
@@ -263,7 +266,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.20");                          // Debug version
+console.log(version);                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -345,7 +348,15 @@ function setGlobalVariables() {
         setLanguage('EN');
         setSite('Contact');
         setDevice('PC');
-    } 
+    } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html'){
+        setLanguage('ES');
+        setSite('Contact');
+        setDevice('PC');
+    } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html'){
+        setLanguage('EN');
+        setSite('Contact');
+        setDevice('PC');
+    }
    // MOBILE VERSION
     else if (currentURL === 'https://lauglitchgpt.blogspot.com/?m=1') {
         setLanguage('ES');
@@ -363,6 +374,14 @@ function setGlobalVariables() {
         setLanguage('EN');
         setSite('Contact');
         setDevice('Mobile');
+    }else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html?m=1'){
+        setLanguage('ES');
+        setSite('Contact');
+        setDevice('PC');
+    } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html?m=1'){
+        setLanguage('EN');
+        setSite('Contact');
+        setDevice('PC');
     } else {
         console.log("No existe la página: " + currentURL);
     }
@@ -408,10 +427,20 @@ function setDisplay(){
         if(!(elem === langDropdown || elem === moreDropdown || elem === langDropdownMobile))
             elem.style.display = 'block';
     });
+
     toHide.forEach((elem) => {
         //console.log("No " + elem.id)
         elem.style.display = 'none';
     });
+
+    // Show or hider okButton
+    if ((currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html') || (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html')
+    || (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html?m=1') ||(currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html?m=1')){
+        doneImage.style.display = 'block';
+    } else {
+        doneImage.style.display = 'none';
+    }
+
 }
 // Change Navbar buttons based on URL
 function switchKeypadButtons(){
@@ -660,7 +689,7 @@ function enableButton(button) {
 // Función para aplicar el margen superior al contenedor
 function applyMarginToContainer() {
     var iframeContainer = document.getElementById("iframe-container");
-    iframeContainer.style.marginTop = "-50%"; // Ajusta el valor según sea necesario
+    iframeContainer.style.marginTop = "20px"; // Ajusta el valor según sea necesario
 }
 
 // Observador de mutación para detectar cuando el iframe se inserta
