@@ -1,0 +1,9 @@
+ .error-navigation-container {
+    position: relative !important;
+  }
+  .form-all {
+    max-height: 500px !important;
+  }
+  .form-footer {
+    display: none !important;
+  }
