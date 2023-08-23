@@ -8,7 +8,7 @@
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
-let version = "V1.22"
+let version = "V1.23"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -374,7 +374,7 @@ function setGlobalVariables() {
         setLanguage('EN');
         setSite('Contact');
         setDevice('Mobile');
-    }else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html?m=1'){
+    } else if (currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html?m=1'){
         setLanguage('ES');
         setSite('Contact');
         setDevice('PC');
@@ -433,6 +433,10 @@ function setDisplay(){
         //console.log("No " + elem.id)
         elem.style.display = 'none';
     });
+
+    if (getDevice() === 'PC' && getSite() === 'Contact' && window.innerWidth < 768){
+        disable(contactButtonMobile)
+    } 
 
     // Show or hider okButton
     if ((currentURL === 'https://lauglitchgpt.blogspot.com/p/contacto/done.html') || (currentURL === 'https://lauglitchgpt.blogspot.com/p/contact/done.html')
