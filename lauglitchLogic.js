@@ -8,7 +8,7 @@
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
-let version = "V1.26"
+let version = "V1.1"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
