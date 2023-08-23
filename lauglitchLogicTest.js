@@ -396,7 +396,8 @@ function setDisplay(){
     let lang = getLanguage();       // TODO: Intentar borrar estos 3 y usar los getters
     let site = getSite();
     let device = getDevice();
-
+    var currentURL = window.location.href;
+    
     console.log("Language: " + getLanguage() + " / Site: " + getSite() + " / Device: " + getDevice())
     webElements.forEach((elem) => {
 
