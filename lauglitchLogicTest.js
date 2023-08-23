@@ -8,7 +8,7 @@
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
-let version = "V1.21"
+let version = "V1.22"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -629,14 +629,13 @@ function readjustContent() {
         // Translate both columns 
         DivContactLeft.style.marginLeft = "10%"
         DivContactRight.style.marginLeft = "10%"
-        DivContactLeft.style.marginBottom = "-10%"
 
         spanishForm.classList.add("contactStyleSmall")
         englishForm.classList.add("contactStyleSmall")
         spanishForm.classList.remove("contactStyleLarge")
         englishForm.classList.remove("contactStyleLarge")
 
-
+        
     } else {
         imageContainers.forEach(container => {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
@@ -648,16 +647,18 @@ function readjustContent() {
             englishForm.classList.add("contactStyleSmall")
             spanishForm.classList.remove("contactStyleLarge")
             englishForm.classList.remove("contactStyleLarge")
+
         } else {
             spanishForm.classList.add("contactStyleLarge")
             englishForm.classList.add("contactStyleLarge")
             spanishForm.classList.remove("contactStyleSmall")
             englishForm.classList.remove("contactStyleSmall")
+
         }
 
         // Restart both columns 
         DivContactLeft.style.marginLeft = "0%"
-        DivContactRight.style.marginLeft = "0%"        
+        DivContactRight.style.marginLeft = "0%"      
     }
 
     changeNavbarAccordingToDevice();
