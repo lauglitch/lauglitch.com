@@ -263,7 +263,7 @@ function getDomain(url) {
 }
 
 ///////////// 2 - INSTRUCTIONS
-console.log("V1.19");                          // Debug version
+console.log("V1.20");                          // Debug version
 
 // 2.1. Graphics
 setGlobalVariables();                      // Called on first page load
@@ -657,5 +657,22 @@ function enableButton(button) {
     }
 }
 
+// Función para aplicar el margen superior al contenedor
+function applyMarginToContainer() {
+    var iframeContainer = document.getElementById("iframe-container");
+    iframeContainer.style.marginTop = "20px"; // Ajusta el valor según sea necesario
+}
+
+// Observador de mutación para detectar cuando el iframe se inserta
+var observer = new MutationObserver(function(mutationsList) {
+    for (var mutation of mutationsList) {
+        if (mutation.addedNodes.length > 0 && mutation.addedNodes[0].tagName === "IFRAME") {
+            applyMarginToContainer();
+        }
+    }
+});
+
+// Observa cambios en el contenedor
+observer.observe(document.getElementById("iframe-container"), { childList: true });
 
 ///////////// END /////////////
