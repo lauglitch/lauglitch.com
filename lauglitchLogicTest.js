@@ -8,7 +8,7 @@
 let language = "ES";    // ES || EN
 let site = "Home";      // Home || Contact
 let device = 'PC';      // PC || Mobile 
-let version = "V1.27"
+let version = "V1.28"
 const content = document.body;
 const loaderContainer = document.querySelector(".loader-container");
 let isRedirecting = false;
@@ -292,9 +292,10 @@ document.addEventListener("DOMContentLoaded", function () {
 function applyPageTransition(url) {
     if (!isRedirecting) {
         isRedirecting = true;
-        loaderContainer.style.opacity = 1;
+        loaderContainer.style.opacity = 0;
         setTimeout(() => {
             redirectTo(url);
+            loaderContainer.style.opacity = 1;
         }, 1000); // Tiempo de espera para el desvanecimiento
     }
 }
