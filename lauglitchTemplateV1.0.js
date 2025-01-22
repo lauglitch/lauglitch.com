@@ -212,6 +212,14 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
     
           <div class='row'>
 
+			<div class='col-lg-4 contenedor'>
+              <div class='row mb-2 postImagen contenido'>
+                <img class='tamanoImagen' src='https://imgur.com/Usmc9kp.png'/>
+              </div>
+              <div class='row mb-2 contenido'>
+                <a class='tamanoTituloJuego' href='https://github.com/lauglitch/Graphic-Design/blob/main/Agenda2025ByLauglitch.pdf'>Agenda 2025</a>
+              </div>
+            </div>
             <div class='col-lg-4 contenedor'>
               <div class='row mb-2 postImagen contenido'>
                 <img class='tamanoImagen' src='https://imgur.com/M148I5l.png'/>
@@ -228,6 +236,11 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
                 <a class='tamanoTituloJuego' href='https://lauglitch.itch.io/twitracker'>TwiTracker</a>
               </div>
             </div>
+
+
+          </div>
+
+          <div class='row'>
             <div class='col-lg-4 contenedor'>
               <div class='row mb-2 postImagen contenido'>
                 <img class='tamanoImagen' src='https://imgur.com/j3M6tVG.png'/>
@@ -236,11 +249,6 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
                 <a class='tamanoTituloJuego' href='https://iviuriel.itch.io/if-i'>If I</a>
               </div>
             </div>
-
-          </div>
-
-          <div class='row'>
-
             <div class='col-lg-4 contenedor'>
               <div class='row mb-2 postImagen contenido'>
                 <img class='tamanoImagen' src='https://imgur.com/9AFJqM6.png'/>
@@ -249,7 +257,6 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
                 <a class='tamanoTituloJuego' href='https://rodillos-gaming.itch.io/desktop-tower-chess'>Desktop Tower Chess</a>
               </div>
             </div>
-          
             <div class='col-lg-4 contenedor'>
               <div class='row mb-2 postImagen contenido'>
                 <img class='tamanoImagen' src='https://imgur.com/RgDyD3N.png'/>
@@ -258,8 +265,10 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
                 <a class='tamanoTituloJuego' href='https://rodillos-gaming.itch.io/triskel'>Triskel</a>
               </div>
             </div>
+          </div>
 
-            <div class='col-lg-4 contenedor'>
+		  <div class='row'>
+		   <div class='col-lg-4 contenedor'>
               <div class='row mb-2 postImagen contenido'>
                 <img class='tamanoImagen' src='https://imgur.com/MMXDxc7.png'/>
               </div>
@@ -267,8 +276,7 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
                 <a class='tamanoTituloJuego' href='https://diegodiaz.itch.io/wanted-point-and-shot'>Wanted: Point And Shot</a>
               </div>
             </div>
-
-            <div class='col-lg-4 contenedor'>
+           <div class='col-lg-4 contenedor'>
 
               <div class='row mb-2 postImagen contenido'>
                 <img class='tamanoImagen' src='https://imgur.com/WcfKSGs.png'/>
@@ -278,16 +286,9 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
               </div>
 
             </div>
-
-            <!--
-            <div class='col-lg-4 contenedor'>
-            </div>
-            -->
-
-          </div>
-
-        </div>
- 
+		  </div>
+		  
+		</div>
 
       <!-- Cuerpo Página Contacto Español -->
       <b:else/>
