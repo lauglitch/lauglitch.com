@@ -634,21 +634,31 @@ function readjustContent() {
             container.classList.add('col-sm-12', 'col-12', 'text-center');  // Agregar nuevas clases para pantallas pequeñas
         });
 
-        // Translate both columns 
-        DivContactLeft.style.marginLeft = "10%"
-        DivContactRight.style.marginLeft = "10%"
-
+        // English and Spanish small forms on Contact Page
+        spanishForm.parentElement.classList.remove('pcForm');   // Delete existing classes if any
+        spanishForm.parentElement.classList.add('mobileForm');  // Add new classes for small screens
+        englishForm.parentElement.classList.remove('pcForm');   // Delete existing classes if any
+        englishForm.parentElement.classList.add('mobileForm');  // Add new classes for small screens
         spanishForm.classList.add("contactStyleSmall")
         englishForm.classList.add("contactStyleSmall")
         spanishForm.classList.remove("contactStyleLarge")
         englishForm.classList.remove("contactStyleLarge")
 
+        // Translate both columns 
+        DivContactLeft.style.marginLeft = "10%"
+        DivContactRight.style.marginLeft = "10%"
         
     } else {
         imageContainers.forEach(container => {
             container.classList.remove('col-sm-12', 'col-12', 'text-center');  // Eliminar clases existentes si las hubiera
             container.classList.add('col-lg-4', 'col-md-4', 'text-center');  // Agregar nuevas clases para pantallas grandes
         });
+
+        // English and Spanish small forms on Contact Page
+        spanishForm.parentElement.classList.remove('mobileForm');   // Delete existing classes if any
+        spanishForm.parentElement.classList.add('pcForm');          // Add new classes for large screens
+        englishForm.parentElement.classList.remove('mobileForm');   // Delete existing classes if any
+        englishForm.parentElement.classList.add('pcForm');          // Add new classes for large screens
 
         if (window.innerWidth < 991) {
             spanishForm.classList.add("contactStyleSmall")
@@ -695,5 +705,63 @@ function enableButton(button) {
         button.disabled = false;
     }
 }
+
+function handleSubmit(formId, buttonId, messageId) {
+    document.getElementById(formId).addEventListener('submit', function(event) {
+      event.preventDefault();  // Evitar el envío estándar del formulario
+  
+      let form = this;
+      let formData = new FormData(form);
+  
+      // Deshabilitar todos los campos del formulario
+      let formElements = form.elements;
+      for (let i = 0; i < formElements.length; i++) {
+        formElements[i].disabled = true;
+      }
+  
+      // Cambiar el texto del botón a "Enviando..." / "Sending..."
+      let submitButton = document.getElementById(buttonId);
+      let sendingText = (language === "ES") ? "Enviando..." : "Sending...";
+      let sentText = (language === "ES") ? "Enviado" : "Sent";
+      
+      submitButton.innerText = sendingText;
+  
+      // Desactivar el botón para evitar más clics
+      submitButton.disabled = true;
+  
+      // Añadir clase .no-hover para desactivar el hover
+      submitButton.classList.add('no-hover');
+  
+      // Hacer el envío utilizando fetch()
+      fetch('https://formsubmit.co/ajax/tu-email@example.com', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Cuando la respuesta es exitosa, cambiar el texto a "Enviado"
+        submitButton.innerText = sentText;
+  
+        // Mostrar el mensaje de confirmación solo después de que el botón diga "Enviado"
+        setTimeout(() => {
+          document.getElementById(messageId).style.display = 'block';
+        }, 300); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
+      })
+      .catch(error => {
+        console.error('Error al enviar el formulario:', error);
+  
+        // Si ocurre un error, restaurar el botón
+        submitButton.innerText = (language === "ES") ? "Enviar" : "Send";
+        submitButton.disabled = false;  // Habilitar el botón nuevamente
+  
+        // Eliminar la clase .no-hover para restaurar el hover
+        submitButton.classList.remove('no-hover');
+      });
+    });
+  }
+  
+// Run the function for both forms
+handleSubmit("spanishForm", "submitButtonES", "confirmationMessageES");
+handleSubmit("englishForm", "submitButtonEN", "confirmationMessageEN");
 
 ///////////// END /////////////
