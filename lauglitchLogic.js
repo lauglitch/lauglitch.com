@@ -289,6 +289,16 @@ document.addEventListener('DOMContentLoaded', function() {
         elemento.classList.add('active');
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const loaderContainer = document.querySelector(".loader-container");
+
+    // Show content after loading
+    loaderContainer.style.opacity = 0;
+
+    loaderContainer.style.display = "none";
+    content.style.opacity = 1;
+});
+
 ///////////// 3 - NAVIGATION
 // Función para aplicar la transición de página
 // Función para aplicar la transición de página
@@ -305,7 +315,7 @@ function redirectTo(url) {
     content.style.transform = "translateY(20px)";
     window.location.href = url;
 }
-// Evento al cargar la página
+// Event on page load
 document.addEventListener("DOMContentLoaded", function () {
     // Aplicar la transición de entrada al cargar la página
     content.style.opacity = 1;
