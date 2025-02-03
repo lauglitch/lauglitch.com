@@ -239,21 +239,19 @@ strong {
 .barrido-izquierda,
 .barrido-derecha {
     opacity: 0;
-    position: relative; /* Asegura que sigan en su flujo normal */
-    pointer-events: none; /* Evita interacciones mientras están ocultos */
+    transform: translateX(-100%);
+    position: relative; /* Mantiene la posición en el flujo del DOM */
+    will-change: transform, opacity; /* Optimiza la animación */
 }
 
-/* Activar animación cuando se agregue la clase .active */
+/* Estado final al activarse */
 .barrido-izquierda.active {
     animation: barrido-izquierda 1s ease-out forwards;
-    pointer-events: auto; /* Reactiva los clics cuando la animación termina */
 }
 
 .barrido-derecha.active {
     animation: barrido-derecha 1s ease-out forwards;
-    pointer-events: auto; /* Reactiva los clics cuando la animación termina */
 }
-
 
 #blog-pager {
     padding: 10px 0

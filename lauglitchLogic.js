@@ -284,8 +284,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.barrido-izquierda, .barrido-derecha').forEach(elemento => {
             elemento.classList.add('active');
         });
-    }, 500); // Delay to make sure that Blogspot has loaded everything
+    }, 300); // Pequeño delay para asegurar que el DOM esté completamente cargado
 });
+
 
 ///////////// 3 - NAVIGATION
 // Función para aplicar la transición de página
