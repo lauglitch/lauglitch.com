@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.barrido-izquierda, .barrido-derecha').forEach(elemento => {
             elemento.classList.add('active');
         });
-    }, 0); 
+    }, 100); // Pequeño retraso para asegurar que Blogspot haya cargado todo
 });
 
 ///////////// 3 - NAVIGATION
