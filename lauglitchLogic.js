@@ -280,23 +280,11 @@ window.addEventListener("resize", readjustContent);
 
 // 2.3. Load Web
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.barrido-izquierda').forEach(elemento => {
-        elemento.classList.add('active');
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.barrido-derecha').forEach(elemento => {
-        elemento.classList.add('active');
-    });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const loaderContainer = document.querySelector(".loader-container");
-
-    // Show content after loading
-    loaderContainer.style.opacity = 0;
-
-    loaderContainer.style.display = "none";
-    content.style.opacity = 1;
+    setTimeout(() => {
+        document.querySelectorAll('.barrido-izquierda, .barrido-derecha').forEach(elemento => {
+            elemento.classList.add('active');
+        });
+    }, 500); // Pequeño retraso para asegurar que Blogspot haya cargado todo
 });
 
 ///////////// 3 - NAVIGATION

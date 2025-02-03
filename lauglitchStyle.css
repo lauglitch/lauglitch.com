@@ -211,6 +211,7 @@ strong {
     font-weight: 700
 }
 
+/* Animación de barrido desde la izquierda */
 @keyframes barrido-izquierda {
     0% {
         transform: translateX(-100%);
@@ -221,17 +222,8 @@ strong {
         opacity: 1;
     }
 }
-/* Aplicamos la animación al elemento */
-.barrido-izquierda {
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: opacity 0.5s ease-out; /* Se agrega transición para suavizar la opacidad */
-}
-/* La clase 'active' agrega la animación de barrido-izquierda */
-.barrido-izquierda.active {
-    animation: barrido-izquierda 1s ease-out forwards; /* Animación de 1 segundo */
-}
 
+/* Animación de barrido desde la derecha */
 @keyframes barrido-derecha {
     0% {
         transform: translateX(100%);
@@ -242,17 +234,26 @@ strong {
         opacity: 1;
     }
 }
-/* Aplicamos la animación al elemento */
+
+/* Estado inicial de los elementos (fuera de pantalla) */
+.barrido-izquierda,
 .barrido-derecha {
-    transform: translateX(100%);
     opacity: 0;
-    transition: opacity 0.5s ease-out; /* Se agrega transición para suavizar la opacidad */
+    position: relative; /* Asegura que sigan en su flujo normal */
+    pointer-events: none; /* Evita interacciones mientras están ocultos */
 }
 
-/* La clase 'active' agrega la animación de barrido-izquierda */
-.barrido-derecha.active {
-    animation: barrido-derecha 1s ease-out forwards; /* Animación de 1 segundo */
+/* Activar animación cuando se agregue la clase .active */
+.barrido-izquierda.active {
+    animation: barrido-izquierda 1s ease-out forwards;
+    pointer-events: auto; /* Reactiva los clics cuando la animación termina */
 }
+
+.barrido-derecha.active {
+    animation: barrido-derecha 1s ease-out forwards;
+    pointer-events: auto; /* Reactiva los clics cuando la animación termina */
+}
+
 
 #blog-pager {
     padding: 10px 0
