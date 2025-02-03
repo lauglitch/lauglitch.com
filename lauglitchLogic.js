@@ -279,15 +279,15 @@ window.addEventListener("load", readjustContent);
 window.addEventListener("resize", readjustContent);
 
 // 2.3. Load Web
-document.addEventListener("DOMContentLoaded", function () {
-    const loaderContainer = document.querySelector(".loader-container");
-
-    // Mostrar el contenido después de cargar
-    loaderContainer.style.opacity = 0;
-    setTimeout(() => {
-        loaderContainer.style.display = "none";
-        content.style.opacity = 1;
-    }, 1000); // Tiempo de espera para el desvanecimiento  
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.barrido-izquierda').forEach(elemento => {
+        elemento.classList.add('active');
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.barrido-derecha').forEach(elemento => {
+        elemento.classList.add('active');
+    });
 });
 ///////////// 3 - NAVIGATION
 // Función para aplicar la transición de página
@@ -296,18 +296,14 @@ function applyPageTransition(url) {
     if (!isRedirecting) {
         isRedirecting = true;
         loaderContainer.style.opacity = 1;
-        setTimeout(() => {
-            redirectTo(url);
-        }, 1000); // Tiempo de espera para el desvanecimiento
+        redirectTo(url);
     }
 }
 // Función de redirección con transición
 function redirectTo(url) {
     content.style.opacity = 0;
     content.style.transform = "translateY(20px)";
-    setTimeout(() => {
-        window.location.href = url;
-    }, 500); 
+    window.location.href = url;
 }
 // Evento al cargar la página
 document.addEventListener("DOMContentLoaded", function () {
@@ -743,9 +739,10 @@ function handleSubmit(formId, buttonId, messageId) {
         submitButton.innerText = sentText;
   
         // Mostrar el mensaje de confirmación solo después de que el botón diga "Enviado"
-        setTimeout(() => {
-          document.getElementById(messageId).style.display = 'block';
-        }, 300); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
+        document.getElementById(messageId).style.display = 'block';
+        // setTimeout(() => {
+        //   document.getElementById(messageId).style.display = 'block';
+        // }, 300); // Retraso de 300ms para asegurar que el texto "Enviado" ya esté visible
       })
       .catch(error => {
         console.error('Error al enviar el formulario:', error);

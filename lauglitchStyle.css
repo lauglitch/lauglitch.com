@@ -211,6 +211,48 @@ strong {
     font-weight: 700
 }
 
+@keyframes barrido-izquierda {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* Aplicamos la animación al elemento */
+.barrido-izquierda {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity 0.5s ease-out; /* Se agrega transición para suavizar la opacidad */
+}
+/* La clase 'active' agrega la animación de barrido-izquierda */
+.barrido-izquierda.active {
+    animation: barrido-izquierda 1s ease-out forwards; /* Animación de 1 segundo */
+}
+
+@keyframes barrido-derecha {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* Aplicamos la animación al elemento */
+.barrido-derecha {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: opacity 0.5s ease-out; /* Se agrega transición para suavizar la opacidad */
+}
+
+/* La clase 'active' agrega la animación de barrido-izquierda */
+.barrido-derecha.active {
+    animation: barrido-derecha 1s ease-out forwards; /* Animación de 1 segundo */
+}
 
 #blog-pager {
     padding: 10px 0
