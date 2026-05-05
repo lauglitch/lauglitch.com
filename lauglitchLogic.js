@@ -125,7 +125,7 @@ const webElements = [
 // 0.5 - Videojuegos (Imagenes y Links)
 var vgImages = [
     {
-        src: "https://imgur.com/Usmc9kp.png", alt: "English Technical Dictionary (dev)", link: "https://english-technical-dictionary.vercel.app/"
+        src: "https://imgur.com/sGQVkY1.png", alt: "English Technical Dictionary (dev)", link: "https://english-technical-dictionary.vercel.app/"
     },
     { 
         src: 'https://imgur.com/Usmc9kp.png', alt: 'Agenda 2025', link: 'https://github.com/lauglitch/Graphic-Design/blob/main/Agenda2025ByLauglitch.pdf' 
